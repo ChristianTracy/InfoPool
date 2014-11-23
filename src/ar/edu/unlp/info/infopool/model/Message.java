@@ -1,5 +1,7 @@
 package ar.edu.unlp.info.infopool.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -8,11 +10,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Message {
+public class Message implements Serializable {
+	private static final long serialVersionUID = 9169212010295071285L;
+
 	@Id
 	@GeneratedValue
 	private long id;
-	
+
 	private String text;
 
 	@OneToOne

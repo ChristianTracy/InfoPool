@@ -5,6 +5,9 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Complaint implements Serializable {
@@ -15,7 +18,13 @@ public class Complaint implements Serializable {
 	private long id;
 	
 	private String comment;
+	
+	@ManyToOne
+	@JoinColumn(name = "state_id")
 	private ComplaintState state;
+	
+	@OneToOne
+	@JoinColumn(name = "owner_fk")
 	private Traveler owner;
 	
 	public Complaint() {
