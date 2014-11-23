@@ -1,0 +1,7 @@
+#Archivos fuente 
+build/
+
+#Archivos de configuración de eclipse
+.settings/
+.classpath
+.project
