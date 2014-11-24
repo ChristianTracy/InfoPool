@@ -1,6 +1,11 @@
 package ar.edu.unlp.info.infopool.model;
 
-public class Unchecked extends ComplaintState {
+import java.io.Serializable;
+import javax.persistence.Entity;
+
+@Entity
+public class Unchecked extends ComplaintState implements Serializable {
+	private static final long serialVersionUID = 4257038604382705345L;
 
 	public Unchecked() {
 

@@ -1,6 +1,9 @@
 package ar.edu.unlp.info.infopool.model;
 
-public class Pending extends State {
+import java.io.Serializable;
+
+public class Pending extends State implements Serializable{
+	private static final long serialVersionUID = -8199489895283621816L;
 
 	public Pending() {
 

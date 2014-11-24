@@ -1,20 +1,42 @@
 package ar.edu.unlp.info.infopool.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Travel {
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
+@Entity
+public class Travel implements Serializable{
+	private static final long serialVersionUID = 6901327150603910816L;
+	@Id
+	@GeneratedValue
+	private long id;
 	private List<WeekDays> days;
 	private String from;
 	private Date returnTime;
 	private int seats;
 	private Date date;
 	private String to;
-	public List<Vote> votes = new LinkedList<Vote>();
-	public List<Traveler> travelers = new LinkedList<Traveler>();
-	public Traveler driver;
+	
+	@OneToMany(cascade = CascadeType.REMOVE)
+	@JoinColumn(name = "vote_id")
+	private List<Vote> votes = new LinkedList<Vote>();
+	
+	@ManyToMany(mappedBy = "otherTravels")
+	private List<Traveler> travelers = new LinkedList<Traveler>();
+	
+	@ManyToOne
+	@JoinColumn(name="driver_id")
+	private Traveler driver; //Owner
 
 	public Travel() {
 

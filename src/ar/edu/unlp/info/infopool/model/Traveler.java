@@ -8,6 +8,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -30,8 +31,14 @@ public class Traveler extends User implements Serializable {
 	@JoinColumn(name = "complaint_fk")
 	private List<Complaint> complaints = new LinkedList<Complaint>();
 	
-	
+	@OneToMany(mappedBy = "driver", cascade =CascadeType.REMOVE)
 	private List<Travel> travels = new LinkedList<Travel>();
+	
+	@ManyToMany
+	@JoinColumn(name="travel_id")
+	private List<Travel> otherTravels = new LinkedList<Travel>();
+	
+	
 	private boolean block;
 
 	public Traveler() {
@@ -154,6 +161,14 @@ public class Traveler extends User implements Serializable {
 
 	public void setBlock(boolean block) {
 		this.block = block;
+	}
+
+	public List<Travel> getOtherTravels() {
+		return otherTravels;
+	}
+
+	public void setOtherTravels(List<Travel> otherTravels) {
+		this.otherTravels = otherTravels;
 	}
 
 }
