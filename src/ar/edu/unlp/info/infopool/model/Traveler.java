@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 public class Traveler extends User implements Serializable {
 
 	private static final long serialVersionUID = -7394471909208419408L;
-	private int email;
+	private String email;
 	private String name;
 	private String surname;
 	private String telephone;
@@ -91,11 +91,11 @@ public class Traveler extends User implements Serializable {
 		travel.addVote(vote);
 	}
 
-	public int getEmail() {
+	public String getEmail() {
 		return email;
 	}
 
-	public void setEmail(int email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
