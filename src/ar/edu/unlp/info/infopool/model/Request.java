@@ -14,13 +14,18 @@ public class Request implements Serializable {
 	@Id
 	@GeneratedValue
 	private long id;
+
+	@OneToOne
+	@JoinColumn(name = "owner_fk")
+	private Traveler owner; // Quien hace el requerimiento
+
+	@OneToOne
+	@JoinColumn(name = "state_fk")
+	private State state;
 	
 	@OneToOne
-	@JoinColumn(name="owner_fk")
-	private Traveler owner; //Quien hace el requerimiento
-
-	private State state;
-	private Travel travel; //Viaje seleccionado
+	@JoinColumn(name="travel_fk")
+	private Travel travel; // Viaje seleccionado
 
 	public Request() {
 		setState(new Pending());

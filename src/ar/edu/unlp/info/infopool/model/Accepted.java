@@ -1,6 +1,12 @@
 package ar.edu.unlp.info.infopool.model;
 
-public class Accepted extends State {
+import java.io.Serializable;
+import javax.persistence.Entity;
+
+@Entity
+public class Accepted extends State implements Serializable {
+	private static final long serialVersionUID = 2284173225539147904L;
+
 
 	public Accepted(){
 

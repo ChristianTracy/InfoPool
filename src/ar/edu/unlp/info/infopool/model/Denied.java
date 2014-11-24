@@ -1,6 +1,11 @@
 package ar.edu.unlp.info.infopool.model;
 
-public class Denied extends State {
+import java.io.Serializable;
+import javax.persistence.Entity;
+
+@Entity
+public class Denied extends State implements Serializable {
+	private static final long serialVersionUID = -710823708030720057L;
 
 	public Denied() {
 

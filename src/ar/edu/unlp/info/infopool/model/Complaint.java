@@ -19,7 +19,7 @@ public class Complaint implements Serializable {
 	
 	private String comment;
 	
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "state_id")
 	private ComplaintState state;
 	
