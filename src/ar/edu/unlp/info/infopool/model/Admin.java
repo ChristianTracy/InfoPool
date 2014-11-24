@@ -1,14 +1,21 @@
 package ar.edu.unlp.info.infopool.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
-public class Admin extends User {
-
+public class Admin extends User implements Serializable {
+	private static final long serialVersionUID = 5360373134182868086L;
+	
+	@OneToMany
+	@JoinColumn(name = "event_fk")
 	private List<Event> events = new LinkedList<Event>();
 
 	public Admin() {

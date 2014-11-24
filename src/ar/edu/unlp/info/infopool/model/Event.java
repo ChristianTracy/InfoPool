@@ -1,9 +1,18 @@
 package ar.edu.unlp.info.infopool.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Event {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+@Entity
+public class Event implements Serializable{
+	private static final long serialVersionUID = -6249564396944050268L;
+	@Id
+	@GeneratedValue
+	private long id;
 	private Date date;
 	private String description;
 	private String location;
