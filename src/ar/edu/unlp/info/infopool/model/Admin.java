@@ -9,7 +9,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-
+//hola estoy comentando
 @Entity
 public class Admin extends User implements Serializable {
 	private static final long serialVersionUID = 5360373134182868086L;
