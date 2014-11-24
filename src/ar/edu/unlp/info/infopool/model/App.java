@@ -1,19 +1,13 @@
 package ar.edu.unlp.info.infopool.model;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
-
-import ar.edu.unlp.info.infopool.utils.EMF;
+import ar.edu.unlp.info.infopool.dao.impl.GenericDAOHibernateJPA;
 
 public class App {
 	public static void main(String[] args) {
-		System.out.println("Creo entity");
-		EntityManager em = EMF.getEMF().createEntityManager();
-
+		
+		GenericDAOHibernateJPA<Traveler>gDao = new GenericDAOHibernateJPA<Traveler>(Traveler.class);
+//	    PRUEBA CON REFLECTION
+//		GenericDAOHibernateJPA<Traveler>gDao = new GenericDAOHibernateJPA<Traveler>();
 		Traveler t = new Traveler();
 		t.setEmail("algo@mail.com");
 		t.setName("Mariel");
@@ -22,16 +16,18 @@ public class App {
 		t.setTelephone("5555555");
 		t.setUsername("mcordal");
 
-		Admin a = new Admin();
-		a.setUsername("admin");
-		a.setPassword("admin");
+		Traveler t2 = new Traveler();
+		t2.setEmail("algoOtro@mail.com");
+		t2.setName("Christian");
+		t2.setPassword("123456");
+		t2.setSurname("Tracy");
+		t2.setTelephone("888888");
+		t2.setUsername("cTracy");
 
-		EntityTransaction etx = em.getTransaction();
-		etx.begin();
-		em.persist(t);
-		em.persist(a);
-		em.flush();
-		etx.commit();
-		em.close();
+		gDao.add(t);
+		gDao.add(t2);
+
+		User result = gDao.getById(new Long(1));
+		System.out.println(result.getUsername());
 	}
 }
