@@ -29,11 +29,11 @@ public class Travel implements Serializable {
 	@ElementCollection(targetClass = WeekDays.class)
 	@Enumerated(EnumType.STRING)
 	private List<WeekDays> days;
-	private String from;
+	private String fromAdress;
 	private Date returnTime;
 	private int seats;
 	private Date date;
-	private String to;
+	private String toAdress;
 
 	@OneToMany(cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "vote_id")
