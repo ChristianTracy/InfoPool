@@ -29,5 +29,9 @@ public class App {
 
 		User result = gDao.getById(new Long(1));
 		System.out.println(result.getUsername());
+		
+		gDao.delete(t);
+		System.out.println("Se borro el usuario con id 1!");
+		
 	}
 }
