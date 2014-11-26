@@ -37,11 +37,15 @@ public class GenericDAOHibernateJPA<T> implements GenericDAO<T> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public T getById(Long id) {
+		T result = null;
 		EntityManager em = EMF.getEMF().createEntityManager();
 		Query consulta = em.createQuery("select t from "
 				+ getPersistentClass().getSimpleName() + " t where id = " + id
 				+ "");
-		T result = (T) consulta.getSingleResult();
+		result = (T) consulta.getSingleResult();
+		if (result == null) {
+			System.out.println("No se pudo obtener el objeto con id:" + id);
+		}
 		return result;
 	}
 
@@ -53,16 +57,25 @@ public class GenericDAOHibernateJPA<T> implements GenericDAO<T> {
 			tx = em.getTransaction();
 			tx.begin();
 			em.remove(entity);
+			em.flush();
 			tx.commit();
 		} catch (RuntimeException e) {
 			if (tx != null && tx.isActive())
 				tx.rollback();
-			System.out.println("Error en la transacciÃ³n");
-			throw e; 
+			System.out.println("Error en la transacción");
+			throw e;
 		} finally {
 			em.close();
 		}
+	}
 
+	@Override
+	public T delete(Long id) {
+		T entity = EMF.getEMF().createEntityManager().find(this.getPersistentClass(), id);
+		if (entity != null) {
+			this.delete(entity);
+		}
+		return entity;
 	}
 
 	public Class<T> getPersistentClass() {

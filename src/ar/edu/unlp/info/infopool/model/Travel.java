@@ -69,14 +69,6 @@ public class Travel implements Serializable {
 		this.days = days;
 	}
 
-	public String getFrom() {
-		return from;
-	}
-
-	public void setFrom(String from) {
-		this.from = from;
-	}
-
 	public Date getReturnTime() {
 		return returnTime;
 	}
@@ -101,13 +93,6 @@ public class Travel implements Serializable {
 		this.date = date;
 	}
 
-	public String getTo() {
-		return to;
-	}
-
-	public void setTo(String to) {
-		this.to = to;
-	}
 
 	public List<Vote> getVotes() {
 		return votes;
@@ -132,5 +117,31 @@ public class Travel implements Serializable {
 	public void setDriver(Traveler driver) {
 		this.driver = driver;
 	}
+
+	public long getId() {
+		return id;
+	}
+
+	private void setId(long id) {
+		this.id = id;
+	}
+
+	public String getFromAdress() {
+		return fromAdress;
+	}
+
+	public void setFromAdress(String fromAdress) {
+		this.fromAdress = fromAdress;
+	}
+
+	public String getToAdress() {
+		return toAdress;
+	}
+
+	public void setToAdress(String toAdress) {
+		this.toAdress = toAdress;
+	}
+	
+	
 
 }

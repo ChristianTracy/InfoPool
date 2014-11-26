@@ -5,6 +5,8 @@ public interface GenericDAO<T> {
 	public void add(T entity);
 //
 	public void delete(T entity);
+	
+	public T delete(Long id);
 //
 //	public void update(T entity);
 

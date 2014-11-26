@@ -50,10 +50,10 @@ public class Traveler extends User implements Serializable {
 		travel.setDate(date);
 		travel.setDays(days);
 		travel.setDriver(this);
-		travel.setFrom(from);
+		travel.setFromAdress(from);
 		travel.setReturnTime(returnTime);
 		travel.setSeats(seats);
-		travel.setTo(to);
+		travel.setFromAdress(to);
 
 	}
 
