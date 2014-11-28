@@ -8,7 +8,7 @@ public interface GenericDAO<T> {
 	
 	public T delete(Long id);
 //
-//	public void update(T entity);
+	public T update(T entity);
 
 	public T getById(Long id);
 

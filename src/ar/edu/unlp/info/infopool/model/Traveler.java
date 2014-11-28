@@ -53,8 +53,8 @@ public class Traveler extends User implements Serializable {
 		travel.setFromAdress(from);
 		travel.setReturnTime(returnTime);
 		travel.setSeats(seats);
-		travel.setFromAdress(to);
-
+		travel.setToAdress(to);
+		this.getTravels().add(travel);
 	}
 
 	public void sendMessage(String text, Traveler aTraveler) {

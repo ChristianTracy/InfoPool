@@ -87,4 +87,16 @@ public class GenericDAOHibernateJPA<T> implements GenericDAO<T> {
 		this.persistentClass = persistentClass;
 	}
 
+	@Override
+	public T update(T entity) {
+		EntityManager em= EMF.getEMF().createEntityManager();
+		EntityTransaction etx= em.getTransaction();
+		etx.begin();
+		T result = em.merge(entity);
+		etx.commit();
+		em.close();
+		return result;
+
+	}
+
 }

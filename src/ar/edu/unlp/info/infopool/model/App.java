@@ -1,5 +1,8 @@
 package ar.edu.unlp.info.infopool.model;
 
+import java.util.Date;
+import java.util.LinkedList;
+
 import ar.edu.unlp.info.infopool.dao.impl.GenericDAOHibernateJPA;
 
 public class App {
@@ -27,20 +30,29 @@ public class App {
 		Admin ad = new Admin();
 		ad.setUsername("admin");
 		ad.setPassword("admin");
-		
-		
 
 		gDao.add(t);
 		gDao.add(t2);
 		gDao.add(ad);
 		
 		
-
+		Traveler user2 = (Traveler) gDao.getById(new Long(2));
+		user2.setName("otroNOMBRE");
+		System.out.println("SE cambió nombre del usuario 2");
+		user2.createTravel(5, new Date(), "hasta", "desde",  new LinkedList<WeekDays>(), new Date());
+		System.out.println("Se creó un viaje para el Travel 2");
+		gDao.update(user2);
+		
+		
 		User result = gDao.getById(new Long(1));
 		System.out.println(result.getUsername());
 		
-		gDao.delete(new Long(1));
-		System.out.println("Se borro el usuario con id 1!");
+//		gDao.delete(new Long(1));
+//		System.out.println("Se borro el usuario con id 1!");
+
+		
+		
+		
 		
 	}
 }
