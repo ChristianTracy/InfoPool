@@ -19,26 +19,26 @@ public class Traveler extends User implements Serializable {
 	private String name;
 	private String surname;
 	private String telephone;
+	private boolean deleted = false;
 
-	@OneToMany(cascade = CascadeType.REMOVE)
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "request_fk")
-	private List<Request> requests = new LinkedList<Request>(); //Faltan mapeos en Request
+	private List<Request> requests = new LinkedList<Request>();
 
-	@OneToMany(mappedBy = "receptor", cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "receptor", cascade = CascadeType.ALL)
 	private List<Message> inbox = new LinkedList<Message>();
-	
-	@OneToMany(cascade = CascadeType.REMOVE)
+
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "complaint_fk")
 	private List<Complaint> complaints = new LinkedList<Complaint>();
-	
-	@OneToMany(mappedBy = "driver", cascade =CascadeType.REMOVE)
+
+	@OneToMany(mappedBy = "driver", cascade = CascadeType.MERGE)
 	private List<Travel> travels = new LinkedList<Travel>();
-	
-	@ManyToMany
-	@JoinColumn(name="travel_id")
+
+	@ManyToMany(cascade = CascadeType.MERGE)
+	@JoinColumn(name = "travel_id")
 	private List<Travel> otherTravels = new LinkedList<Travel>();
-	
-	
+
 	private boolean block;
 
 	public Traveler() {
@@ -169,6 +169,26 @@ public class Traveler extends User implements Serializable {
 
 	public void setOtherTravels(List<Travel> otherTravels) {
 		this.otherTravels = otherTravels;
+	}
+
+	public void addComplaint(Complaint c) {
+		this.getComplaints().add(c);
+	}
+
+	public void addTravel(Travel t) {
+		this.getTravels().add(t);
+	}
+
+	public void addOtherTravel(Travel t) {
+		this.getOtherTravels().add(t);
+	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 
 }

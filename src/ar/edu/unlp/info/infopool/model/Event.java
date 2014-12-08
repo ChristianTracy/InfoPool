@@ -2,10 +2,14 @@ package ar.edu.unlp.info.infopool.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Event implements Serializable{
@@ -17,7 +21,10 @@ public class Event implements Serializable{
 	private String description;
 	private String location;
 	private String name;
-
+	private boolean deleted = false;
+	@OneToMany(mappedBy = "event", cascade = CascadeType.MERGE)
+	private List<Travel> travels = new LinkedList<Travel>();
+	
 	public Event() {
 
 	}
@@ -62,4 +69,34 @@ public class Event implements Serializable{
 		this.name = name;
 	}
 
+	public long getId() {
+		return id;
+	}
+
+	private void setId(long id) {
+		this.id = id;
+	}
+
+	public List<Travel> getTravels() {
+		return travels;
+	}
+
+	public void setTravels(List<Travel> travels) {
+		this.travels = travels;
+	}
+	public void addTravel(Travel t){
+		this.getTravels().add(t);
+	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
+
+
+
+	
 }

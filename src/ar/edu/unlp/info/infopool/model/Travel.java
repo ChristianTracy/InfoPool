@@ -45,7 +45,11 @@ public class Travel implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "driver_id")
 	private Traveler driver; // Owner
-
+	
+	@ManyToOne
+	@JoinColumn(name = "event_id")
+	private Event event = null;
+	
 	public Travel() {
 
 	}
@@ -142,6 +146,19 @@ public class Travel implements Serializable {
 		this.toAdress = toAdress;
 	}
 	
+	
+	
+	public Event getEvent() {
+		return event;
+	}
+
+	public void setEvent(Event event) {
+		this.event = event;
+	}
+
+	public void addEvent(Event event){
+		this.setEvent(event);
+	}
 	
 
 }

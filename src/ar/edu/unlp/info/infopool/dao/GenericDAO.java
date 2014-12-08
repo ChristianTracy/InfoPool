@@ -12,6 +12,6 @@ public interface GenericDAO<T> {
 
 	public T getById(Long id);
 
-//	public boolean exist(Long id);
+	public boolean exist(Long id);
 
 }

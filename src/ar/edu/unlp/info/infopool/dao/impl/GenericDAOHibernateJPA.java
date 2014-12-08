@@ -15,14 +15,6 @@ public class GenericDAOHibernateJPA<T> implements GenericDAO<T> {
 	public GenericDAOHibernateJPA(Class<T> persistentClass) {
 		this.persistentClass = persistentClass;
 	}
-
-	// PRUEBA CON REFLECTION
-	// @SuppressWarnings("unchecked")
-	// public GenericDAOHibernateJPA() {
-	// this.persistentClass = (Class<T>) ((ParameterizedType)
-	// getClass().getGenericSuperclass()).getActualTypeArguments()[0];
-	// }
-
 	@Override
 	public void add(T entity) {
 		EntityManager em = EMF.getEMF().createEntityManager();
@@ -96,7 +88,19 @@ public class GenericDAOHibernateJPA<T> implements GenericDAO<T> {
 		etx.commit();
 		em.close();
 		return result;
-
 	}
 
+	public boolean exist (Long id){
+		T result = this.getById(id);
+		if (result == null){
+			return false;
+		}
+		else{
+			return true;
+		}
+		
+		
+	}
+	
+	
 }

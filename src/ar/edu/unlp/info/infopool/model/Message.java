@@ -27,6 +27,14 @@ public class Message implements Serializable {
 	@JoinColumn(name = "receptor_id")
 	private Traveler receptor;
 
+	public Traveler getReceptor() {
+		return receptor;
+	}
+
+	public void setReceptor(Traveler receptor) {
+		this.receptor = receptor;
+	}
+
 	public Message() {
 
 	}
@@ -54,5 +62,5 @@ public class Message implements Serializable {
 	public void setOwner(Traveler owner) {
 		this.owner = owner;
 	}
-
+	
 }

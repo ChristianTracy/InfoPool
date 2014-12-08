@@ -2,6 +2,7 @@ package ar.edu.unlp.info.infopool.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,15 +20,16 @@ public class Complaint implements Serializable {
 	
 	private String comment;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "state_id")
 	private ComplaintState state;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "owner_fk")
 	private Traveler owner;
 	
 	public Complaint() {
+		super();
 		setState(new Unchecked());
 	}
 

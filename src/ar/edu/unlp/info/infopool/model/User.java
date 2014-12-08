@@ -10,7 +10,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class User implements Serializable {
 	private static final long serialVersionUID = -4369420406935835300L;
 
