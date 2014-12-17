@@ -12,6 +12,9 @@ import ar.edu.unlp.info.infopool.utils.EMF;
 public class GenericDAOHibernateJPA<T> implements GenericDAO<T> {
 	protected Class<T> persistentClass;
 
+	public GenericDAOHibernateJPA() {
+		super();
+	}
 	public GenericDAOHibernateJPA(Class<T> persistentClass) {
 		this.persistentClass = persistentClass;
 	}

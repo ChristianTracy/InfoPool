@@ -9,26 +9,29 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class LoginAction extends ActionSupport {
+	
+	private static final long serialVersionUID = 1L;
 	public String usuario;
 	public String pass;
 	private UserDAO userDAO;
 
 	public String execute() {
-//		Map<String, Object> session = ActionContext.getContext().getSession();
-//		String user = (String) session.get("user");
-//		if (user == null) {
-//			String u = "usuario";
-//			if (u != null) {
-//				session.put("usuario", u);
-//				return "success";
-//			} else {
-//				addFieldError("usuario", "Datos Incorrectos");
-//				return "input";
-//			}
-//		} else {
-//			return "conectado";
-//		}
-		return "success";
+		Map<String, Object> session = ActionContext.getContext().getSession();
+		String user = (String) session.get("user");
+	
+		if (user == null) {
+			String u = "usuario";
+			if (u != null) {
+				session.put("usuario", u);
+				return "success";
+			} else {
+				addFieldError("usuario", "Datos Incorrectos");
+				return "input";
+			}
+		} else {
+			return "conectado";
+		}
+		
 	}
 
 	public String getUsuario() {
