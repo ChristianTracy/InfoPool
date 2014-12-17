@@ -28,8 +28,7 @@ public class LoginAction extends ActionSupport {
 //		} else {
 //			return "conectado";
 //		}
-		System.out.println("estoy en el action");
-		return "input";
+		return "success";
 	}
 
 	public String getUsuario() {
