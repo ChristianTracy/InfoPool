@@ -13,7 +13,6 @@ public class LoginAction extends ActionSupport {
 	public String pass;
 	private UserDAO userDAO;
 
-	@SuppressWarnings("unused")
 	public String execute() {
 //		Map<String, Object> session = ActionContext.getContext().getSession();
 //		String user = (String) session.get("user");

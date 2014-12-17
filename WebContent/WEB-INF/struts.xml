@@ -2,8 +2,8 @@
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts
 Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd" >
 <struts>
-	<constant name="struts.objectFactory"
-		value="org.apache.struts2.spring.StrutsSpringObjectFactory" />
+
+<!-- le saque lo que estaba chuequito -->
 	<package name="default" namespace="/"
 		extends="struts-default, json-default">
 		<action name="loginAction" class="loginAction">
@@ -12,7 +12,7 @@ Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd" >
 			<result name="conectado">/logueado.jsp</result>
 		</action>
 	</package>
-
+	
 </struts>
 
 
