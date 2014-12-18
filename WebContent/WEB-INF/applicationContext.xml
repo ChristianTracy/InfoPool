@@ -10,7 +10,7 @@
 	<!-- <context:component-scan base-package="com.mkyong.common.controller" 
 		/> -->
 	<bean id="UserDAO" class="ar.edu.unlp.info.infopool.dao.impl.UserDAOHibernateJPA" />
-	<bean id="loginAction" class="ar.edu.unlp.info.infopool.actions.LoginAction"  scope="prototype">
+<!-- 	<bean id="loginAction" class="ar.edu.unlp.info.infopool.actions.LoginAction"  scope="prototype"> -->
 <!-- 		<property name="usuarioDAO" ref="usuarioDAO" /> -->
-	</bean>
+<!-- 	</bean> -->
 </beans>
