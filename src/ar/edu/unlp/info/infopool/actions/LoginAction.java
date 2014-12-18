@@ -20,9 +20,10 @@ public class LoginAction extends ActionSupport {
 		String user = (String) session.get("user");
 	
 		if (user == null) {
+			//User u userDao.exist(username,password) si no existe da null sino lo devuelve
 			String u = "usuario";
 			if (u != null) {
-				session.put("usuario", u);
+				session.put("user", u);
 				return "success";
 			} else {
 				addFieldError("usuario", "Datos Incorrectos");
