@@ -1,11 +1,13 @@
 package ar.edu.unlp.info.infopool.actions;
 
-import org.apache.catalina.User;
+import com.opensymphony.xwork2.ActionSupport;
 
 import ar.edu.unlp.info.infopool.dao.UserDAO;
 import ar.edu.unlp.info.infopool.model.Traveler;
 
-public class RegisterAction {
+public class RegisterAction extends ActionSupport {
+	
+	private static final long serialVersionUID = -6611618073361989317L;
 	private UserDAO userDAO;
 	private String email;
 	private String name;

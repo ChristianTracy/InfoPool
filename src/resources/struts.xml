@@ -13,6 +13,7 @@ Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd" >
 		</action>
 
 		<!-- LOGIN -->
+<!-- 		fijar si no necesita como method"input"para que saltee el validate  -->
 		<action name="login" class="ar.edu.unlp.info.infopool.actions.LoginAction">
 			<result name="success">/pages/login.jsp</result>
 		</action>
@@ -27,6 +28,11 @@ Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd" >
 
 		<action name="register" class="ar.edu.unlp.info.infopool.actions.RegisterAction">
 			<result name="success">pages/register-success.jsp</result>
+			<result name="error">pages/register-error.jsp</result>
+		</action>
+
+		<action name="event" class="ar.edu.unlp.info.infopool.actions.EventAction"
+			method="validEvent">
 			<result name="error">pages/register-error.jsp</result>
 		</action>
 

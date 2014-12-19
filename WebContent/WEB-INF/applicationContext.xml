@@ -24,6 +24,7 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 
 <!-- DAOS -->
 	<bean id="userDAO" class="ar.edu.unlp.info.infopool.dao.impl.UserDAOHibernateJPA" />
+	<bean id="eventDAO" class="ar.edu.unlp.info.infopool.dao.impl.GenericDAOHibernateJPA" />
 	
 	
 	
