@@ -4,25 +4,31 @@ Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd" >
 <struts>
 
 	<constant name="struts.devMode" value="true" />
-<!-- 	<constant name="struts.objectFactory" value="org.apache.struts2.spring.StrutsSpringObjectFactory" /> -->
-	
+	<!-- <constant name="struts.objectFactory" value="org.apache.struts2.spring.StrutsSpringObjectFactory" 
+		/> -->
+
 	<package name="default" namespace="/" extends="struts-default">
 		<action name="">
 			<result name="success">/pages/index.jsp</result>
 		</action>
-		
-<!-- LOGIN -->
+
+		<!-- LOGIN -->
 		<action name="login" class="ar.edu.unlp.info.infopool.actions.LoginAction">
 			<result name="success">/pages/login.jsp</result>
 		</action>
-	
-		<action name="loginProcess" class="ar.edu.unlp.info.infopool.actions.LoginAction" method="autenticate">
+
+		<action name="loginProcess" class="ar.edu.unlp.info.infopool.actions.LoginAction"
+			method="autenticate">
 			<result name="success">/pages/main.jsp</result>
 			<result name="badlogin">/pages/login.jsp</result>
 			<result name="logged">/pages/main.jsp</result>
 		</action>
 
 
+		<action name="register" class="ar.edu.unlp.info.infopool.actions.RegisterAction">
+			<result name="success">pages/register-success.jsp</result>
+			<result name="error">pages/register-error.jsp</result>
+		</action>
 
 	</package>
 
