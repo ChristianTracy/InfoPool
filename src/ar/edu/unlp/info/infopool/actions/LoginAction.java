@@ -21,7 +21,6 @@ public class LoginAction extends ActionSupport {
 
 	
 	public String autenticate(){
-
 		Map<String, Object> session = ActionContext.getContext().getSession();
 		User usersession = (User) session.get("user");
 		if (usersession == null) {
