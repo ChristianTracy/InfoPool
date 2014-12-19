@@ -11,44 +11,48 @@ import com.opensymphony.xwork2.ActionSupport;
 public class LoginAction extends ActionSupport {
 	
 	private static final long serialVersionUID = -294055426001660258L;
-	public String usuario;
-	public String pass;
+	public String user;
+	public String password;
 	private UserDAO userDAO;
 
 	public String execute() {
-		Map<String, Object> session = ActionContext.getContext().getSession();
-		String user = (String) session.get("user");
+		return "success";
+	}
+
 	
-		if (user == null) {
-			//User u userDao.exist(username,password) si no existe da null sino lo devuelve
-			String u = "usuario";
+	public String autenticate(){
+
+		Map<String, Object> session = ActionContext.getContext().getSession();
+		User usersession = (User) session.get("user");
+		if (usersession == null) {
+			User u = userDAO.exist("admin","admin");
 			if (u != null) {
 				session.put("user", u);
 				return "success";
 			} else {
 				addFieldError("usuario", "Datos Incorrectos");
-				return "input";
+				return "badlogin";
 			}
 		} else {
-			return "conectado";
-		}
-		
+			return "logged";
+		}		
+	}
+	
+	
+	public String getUser() {
+		return user;
 	}
 
-	public String getUsuario() {
-		return usuario;
+	public void setUser(String user) {
+		this.user = user;
 	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public String getPassword() {
+		return password;
 	}
 
-	public String getPass() {
-		return pass;
-	}
-
-	public void setPass(String pass) {
-		this.pass = pass;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public UserDAO getUserDAO() {
@@ -58,5 +62,6 @@ public class LoginAction extends ActionSupport {
 	public void setUserDAO(UserDAO userDAO) {
 		this.userDAO = userDAO;
 	}
+
 
 }

@@ -10,22 +10,21 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
-	<bean id="entityManagerFactory"
-		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+	<bean id="entityManager" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="jpaVendorAdapter">
-			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"></bean>
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
 		</property>
 	</bean>
+	
 	<bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-		<property name="entityManagerFactory" ref="entityManagerFactory" />
+		<property name="entityManagerFactory" ref="entityManager" />
 	</bean>
 
 	<!-- Optativamente se puede Habilita la configracion de Beans a traves de 
 		las anotaciones a partir de un paquete -->
-	<context:component-scan base-package="unlp.info.edu" />
+<!-- 	<context:component-scan base-package="unlp.info.edu" /> -->
 	<!-- Habilitar@Transactionnal, no alcanza solamente con <context:annotation-config/> -->
 	<tx:annotation-driven transaction-manager="txManager" />
 
-	<bean id="UserDAO" class="ar.edu.unlp.info.infopool.dao.impl.UserDAOHibernateJPA" />
-
+	<bean id="userDAO" class="ar.edu.unlp.info.infopool.dao.impl.UserDAOHibernateJPA" />
 </beans>

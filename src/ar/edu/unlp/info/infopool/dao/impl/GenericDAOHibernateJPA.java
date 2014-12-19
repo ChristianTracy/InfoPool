@@ -1,22 +1,35 @@
 package ar.edu.unlp.info.infopool.dao.impl;
 
-import java.lang.reflect.ParameterizedType;
-
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import ar.edu.unlp.info.infopool.dao.GenericDAO;
 import ar.edu.unlp.info.infopool.utils.EMF;
 
 public class GenericDAOHibernateJPA<T> implements GenericDAO<T> {
 	protected Class<T> persistentClass;
+	@Autowired
+	private EntityManager entityManager;
+
 
 	public GenericDAOHibernateJPA() {
 		super();
 	}
 	public GenericDAOHibernateJPA(Class<T> persistentClass) {
 		this.persistentClass = persistentClass;
+	}
+
+	public EntityManager getEntityManager() {
+		return entityManager;
+	}
+	@PersistenceContext
+	public void setEntityManager(EntityManager entityManager) {
+		this.entityManager = entityManager;
 	}
 	@Override
 	public void add(T entity) {
