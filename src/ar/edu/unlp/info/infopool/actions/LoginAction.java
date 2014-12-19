@@ -47,6 +47,11 @@ public class LoginAction extends ActionSupport {
 		}		
 	}
 	
+	public String logOut(){
+		Map<String, Object> session = ActionContext.getContext().getSession();
+		session.put("user", null);
+		return "exit";
+	}
 	
 	public String getUser() {
 		return user;

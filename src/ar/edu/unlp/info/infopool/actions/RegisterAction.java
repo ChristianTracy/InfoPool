@@ -6,7 +6,7 @@ import ar.edu.unlp.info.infopool.dao.UserDAO;
 import ar.edu.unlp.info.infopool.model.Traveler;
 
 public class RegisterAction extends ActionSupport {
-	
+
 	private static final long serialVersionUID = -6611618073361989317L;
 	private UserDAO userDAO;
 	private String email;
@@ -75,22 +75,43 @@ public class RegisterAction extends ActionSupport {
 		this.userDAO = userDAO;
 	}
 
-	@SuppressWarnings("null")
-	public String execute() {
-		Traveler t =null;
+	
+	public String excute(){
+		return "success";
+	}
+	
+	public String submit() {
+		Traveler t = new Traveler();
 		t.setUsername(username);
 		t.setPassword(password);
 		t.setEmail(email);
 		t.setName(name);
 		t.setSurname(surname);
 		t.setTelephone(telephone);
-		if(t != null){
-		userDAO.add(t);
-		return "success";
+		if (this.check(t)){
+			userDAO.add(t);
+			return  "success";
 		}
-		else
+		else{
+			addFieldError("error", "Debe completar todos los campos");
 			return "error";
-		
+		}
+
+			
+	}
+
+	private boolean check(Traveler t) {
+		// if (t.getEmail() == "" || t.getName() == "" || t.getPassword() == ""
+		// || t.getSurname() == "" || t.getTelephone() == "" || t.getUsername()
+		// == ""){
+		// }
+		if (t.getEmail().isEmpty() || t.getName().isEmpty()
+				|| t.getPassword().isEmpty() || t.getSurname().isEmpty()
+				|| t.getTelephone().isEmpty() || t.getUsername().isEmpty()) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 }

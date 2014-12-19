@@ -27,7 +27,7 @@
       <div class="jumbotron">
         <h1>Bienvenido a InfoPool</h1>
         <p class="lead">Sistema de carpooling creado para alumnos y profesores de la facultad de informática de la Universidad Nacional de La Plata</p>
-        <p><a class="btn btn-lg btn-success" href="#" role="button">Registrarme</a></p>
+        <p><a class="btn btn-lg btn-success" href="register" role="button">Registrarme</a></p>
       </div>
       <!-- Example row of columns -->
       <div class="row">
@@ -48,6 +48,5 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
-	<script src="<c:url value="/resources/js/app.js"/>"></script>
 </body>
 </html>

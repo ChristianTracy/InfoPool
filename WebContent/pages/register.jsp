@@ -1,6 +1,6 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>  
   
-<s:form action="register">  
+<s:form action="registerSubmit">  
 <s:textfield name="name" label="Name"></s:textfield>
 <s:textfield name="username" label="UserName"></s:textfield>    
 <s:password name="password" label="Password"></s:password>  
@@ -11,4 +11,4 @@
 <s:submit value="register"></s:submit>  
   
 </s:form>  
-
+<s:fielderror fieldName="error"/>

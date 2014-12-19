@@ -25,16 +25,26 @@ Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd" >
 			<result name="logged">/pages/main.jsp</result>
 		</action>
 
-
-		<action name="register" class="ar.edu.unlp.info.infopool.actions.RegisterAction">
-			<result name="success">pages/register-success.jsp</result>
-			<result name="error">pages/register-error.jsp</result>
+		<action name="logOut" class="ar.edu.unlp.info.infopool.actions.LoginAction"
+			method="logOut">
+			<result name="exit">/pages/index.jsp</result>
 		</action>
 
+		<action name="register" class="ar.edu.unlp.info.infopool.actions.RegisterAction">
+			<result name="success">pages/register.jsp</result>
+		</action>
+		
+		<action name="registerSubmit" class="ar.edu.unlp.info.infopool.actions.RegisterAction" method ="submit">
+			<result name="success">pages/register-success.jsp</result>
+			<result name="error">pages/register.jsp</result>
+		</action>
+		
+		
 		<action name="event" class="ar.edu.unlp.info.infopool.actions.EventAction"
 			method="validEvent">
 			<result name="error">pages/register-error.jsp</result>
 		</action>
+		
 
 	</package>
 
