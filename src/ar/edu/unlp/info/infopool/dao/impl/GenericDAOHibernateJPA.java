@@ -5,11 +5,12 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unlp.info.infopool.dao.GenericDAO;
 import ar.edu.unlp.info.infopool.utils.EMF;
-@Transactional
+@Repository
 public class GenericDAOHibernateJPA<T> implements GenericDAO<T> {
 	protected Class<T> persistentClass;
 	

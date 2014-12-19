@@ -3,6 +3,8 @@ package ar.edu.unlp.info.infopool.actions;
 import java.util.Map;
 
 import ar.edu.unlp.info.infopool.dao.UserDAO;
+import ar.edu.unlp.info.infopool.model.Admin;
+import ar.edu.unlp.info.infopool.model.Traveler;
 import ar.edu.unlp.info.infopool.model.User;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -19,17 +21,25 @@ public class LoginAction extends ActionSupport {
 		return "success";
 	}
 
-	
+	//VALIDATE() 
 	public String autenticate(){
 		Map<String, Object> session = ActionContext.getContext().getSession();
 		User usersession = (User) session.get("user");
 		if (usersession == null) {
-			User u = userDAO.exist("admin","admin");
+			User u = userDAO.exist(this.getUser(),this.getPassword());
 			if (u != null) {
-				session.put("user", u);
+				if (u.isAdmin()){
+					Admin adminLogued = (Admin) u;
+					session.put("user", adminLogued);
+					return "admin";
+				}
+				else{
+					Traveler loguedTraveler = (Traveler) u;
+					session.put("user", loguedTraveler);
+				}
 				return "success";
 			} else {
-				addFieldError("usuario", "Datos Incorrectos");
+				addFieldError("error", "Datos Incorrectos");
 				return "badlogin";
 			}
 		} else {

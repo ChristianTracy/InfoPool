@@ -14,6 +14,7 @@ if (user == null){ %>
 		
 		<s:password name="password" label="Contraseña"/>
 		<s:submit value="Ingresar"  class="btn btn-lg btn-info btn-block"/>
+		<s:fielderror fieldName="error"/>
 	</s:form>
 	<%} %>
 	

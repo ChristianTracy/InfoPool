@@ -29,7 +29,7 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 	
 	<!-- Optativamente se puede Habilita la configracion de Beans a traves de 
 		las anotaciones a partir de un paquete -->
-<!-- 	<context:component-scan base-package="unlp.info.edu" /> -->
+	<context:component-scan base-package="ar.edu.unlp.info.infopool.dao.impl" /> 
 	<!-- Habilitar@Transactionnal, no alcanza solamente con <context:annotation-config/> -->
 
 </beans>

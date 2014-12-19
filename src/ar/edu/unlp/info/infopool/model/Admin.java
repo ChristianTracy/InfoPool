@@ -41,6 +41,16 @@ public class Admin extends User implements Serializable {
 	public void setEvents(List<Event> events) {
 		this.events = events;
 	}
+
+	@Override
+	public boolean isTraveler() {
+		return false;
+	}
+
+	@Override
+	public boolean isAdmin() {
+		return true;
+	}
 	
 	
 }

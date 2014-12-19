@@ -191,4 +191,14 @@ public class Traveler extends User implements Serializable {
 		this.deleted = deleted;
 	}
 
+	@Override
+	public boolean isTraveler() {
+		return true;
+	}
+
+	@Override
+	public boolean isAdmin() {
+		return false;
+	}
+
 }

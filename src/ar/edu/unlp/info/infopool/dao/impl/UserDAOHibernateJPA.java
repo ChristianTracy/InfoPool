@@ -1,9 +1,16 @@
 package ar.edu.unlp.info.infopool.dao.impl;
 
+import javax.persistence.NoResultException;
+import javax.persistence.Query;
+
+import org.springframework.stereotype.Repository;
+
 import ar.edu.unlp.info.infopool.dao.UserDAO;
 import ar.edu.unlp.info.infopool.model.User;
 
-public class UserDAOHibernateJPA extends GenericDAOHibernateJPA<User> implements UserDAO{
+@Repository
+public class UserDAOHibernateJPA extends GenericDAOHibernateJPA<User> implements
+		UserDAO {
 	public UserDAOHibernateJPA() {
 		super(User.class);
 	}
@@ -12,12 +19,20 @@ public class UserDAOHibernateJPA extends GenericDAOHibernateJPA<User> implements
 		super(persistentClass);
 	}
 
-	public User exist(String username, String password ){
-		String query = "from User u where u.username like " +username+ "and u.password like " +password ;
-		User result = (User) this.getEntityManagerFactory().createQuery(query).getSingleResult();
-		return result;
+	public User exist(String username, String password) {
+		Query query = this
+				.getEntityManagerFactory()
+				.createQuery(
+						"SELECT u FROM User AS u WHERE u.username = :username and password = :password",
+						User.class);
+		query.setParameter("username", username);
+		query.setParameter("password", password);
+		try {
+			User result = (User) query.getSingleResult();
+			return result;
+		} catch (NoResultException e) {
+			return null;
+		}
 	}
-
-	
 
 }
