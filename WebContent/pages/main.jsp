@@ -7,6 +7,7 @@
 <title>PANEL User</title>
 </head>
 <body>
-
+	<h1>Panel de Viajero</h1>
+<a href="logOut">Cerrar Sesión</a>
 </body>
 </html>

@@ -4,10 +4,11 @@
 <head>
 <link href="estilo.css" rel="StyleSheet" type="text/css" id="css" />
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ page import="ar.edu.unlp.info.infopool.model.User"%>
 <title>LOGIN</title>
 </head>
 <body>
-	<% String user = (String) session.getAttribute("user");
+	<% User user = (User) session.getAttribute("user");
 if (user == null){ %>
 	<s:form action="loginProcess" cssClass="form-login">
 	<s:textfield name="user" label="Usuario" cssClass="form-control"/>
