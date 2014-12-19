@@ -61,6 +61,11 @@ public class EventAction extends ActionSupport{
 	}
 	
 	public String execute() {
+		return "success";
+	}
+
+	
+	public String validEvent(){
 		Event e =null;
 		e.setDate(date);
 		e.setDescription(description);
@@ -70,9 +75,11 @@ public class EventAction extends ActionSupport{
 		return "success";
 	}
 
+	 //This method return list of events in database
+//    public String listevents() {
+//        return SUCCESS;
+//    }
+ 
 	
-	public String validEvent(){
-		return "";
-	}
-
+	
 }
