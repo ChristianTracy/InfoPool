@@ -3,13 +3,15 @@
 Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd" >
 <struts>
 
-<!-- 	<constant name="struts.devMode" value="true" /> -->
-
+	<constant name="struts.devMode" value="true" />
+<!-- 	<constant name="struts.objectFactory" value="org.apache.struts2.spring.StrutsSpringObjectFactory" /> -->
+	
 	<package name="default" namespace="/" extends="struts-default">
 		<action name="">
 			<result name="success">/pages/index.jsp</result>
 		</action>
-
+		
+<!-- LOGIN -->
 		<action name="login" class="ar.edu.unlp.info.infopool.actions.LoginAction">
 			<result name="success">/pages/login.jsp</result>
 		</action>

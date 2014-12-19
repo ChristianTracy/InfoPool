@@ -9,11 +9,17 @@
 <body>
 	<% String user = (String) session.getAttribute("user");
 if (user == null){ %>
-	<s:form action="loginProcess">
-		<s:textfield name="user" label="Usuario" maxlength="20" />
-		<s:password name="pass" label="Contraseña" maxlength="20" />
-		<s:submit value="Ingresar" />
+	<s:form action="loginProcess" cssClass="form-login">
+	<s:textfield name="user" label="Usuario" cssClass="form-control"/>
+		
+		<s:password name="password" label="Contraseña"/>
+		<s:submit value="Ingresar"  class="btn btn-lg btn-info btn-block"/>
 	</s:form>
 	<%} %>
+	
+	
+
+	
+	
 </body>
 </html>
