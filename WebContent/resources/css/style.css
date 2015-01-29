@@ -1,1 +1,24 @@
-@CHARSET "US-ASCII";
+.form-signin{
+	margin:0 auto;
+	width: 300px;
+}
+
+.form-signin .usericon{
+	font-size: 110px;
+	color: #cecece;
+}
+
+.form-register{
+	margin:0 auto;
+	width: 400px;
+}
+
+.form-register .registericon{
+	font-size: 110px;
+	color: #cecece;
+}
+
+.form-register label{
+	font-size: 13px;
+	color: #000;
+}

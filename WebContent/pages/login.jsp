@@ -1,27 +1,28 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<link href="estilo.css" rel="StyleSheet" type="text/css" id="css" />
+<%@include file="head.jsp" %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ page import="ar.edu.unlp.info.infopool.model.User"%>
 <title>LOGIN</title>
 </head>
-<body>
-	<% User user = (User) session.getAttribute("user");
-if (user == null){ %>
-	<s:form action="loginProcess" cssClass="form-login">
-	<s:textfield name="user" label="Usuario" cssClass="form-control"/>
-		
-		<s:password name="password" label="Contraseña"/>
-		<s:submit value="Ingresar"  class="btn btn-lg btn-info btn-block"/>
-		<s:fielderror fieldName="error"/>
-	</s:form>
-	<%} %>
-	
-	
-
-	
-	
-</body>
+	<body>
+		<% User user = (User) session.getAttribute("user");
+	if (user == null){ %>
+		<div class="container">
+			<div class="form-signin">
+				<form action="loginProcess" method="post">
+				<center><i class="usericon fa fa-user"></i></center>
+					<div class="form-group">
+						<input type="text" name="user" class="form-control" placeholder="Nombre de usuario">	
+					</div>
+					<div class="form-group">
+						<input type="password" name="password" placeholder ="Contraseña" class="form-control">			
+					</div>
+					<button type="submit" class="btn btn-lg btn-info btn-block">Ingresar</button>
+				</form>			
+			</div>
+		</div>
+		<%} %>
+	</body>
 </html>

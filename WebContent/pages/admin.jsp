@@ -8,6 +8,8 @@
 </head>
 <body>
 <h1>PERFIL ADMIN</h1>
+<%@include file="head.jsp" %>
+<%@include file="navbar.jsp" %>
 <a href="logOut">Cerrar Sesión</a>
 </body>
 </html>

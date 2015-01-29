@@ -23,6 +23,7 @@ public class LoginAction extends ActionSupport {
 
 	//VALIDATE() 
 	public String autenticate(){
+		System.out.println("AUTENTICATE");
 		Map<String, Object> session = ActionContext.getContext().getSession();
 		User usersession = (User) session.get("user");
 		if (usersession == null) {
