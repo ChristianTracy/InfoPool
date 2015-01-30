@@ -6,6 +6,7 @@ import ar.edu.unlp.info.infopool.dao.UserDAO;
 import ar.edu.unlp.info.infopool.model.Admin;
 import ar.edu.unlp.info.infopool.model.Traveler;
 import ar.edu.unlp.info.infopool.model.User;
+import ar.edu.unlp.info.infopool.services.AuthenticationService;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -16,7 +17,7 @@ public class LoginAction extends ActionSupport {
 	public String user;
 	public String password;
 	private UserDAO userDAO;
-
+	private AuthenticationService authenticationService;
 	public String execute() {
 		return "success";
 	}
@@ -24,6 +25,7 @@ public class LoginAction extends ActionSupport {
 	//VALIDATE() 
 	public String autenticate(){
 		System.out.println("AUTENTICATE");
+		authenticationService.printTest();
 		Map<String, Object> session = ActionContext.getContext().getSession();
 		User usersession = (User) session.get("user");
 		if (usersession == null) {
@@ -78,5 +80,14 @@ public class LoginAction extends ActionSupport {
 		this.userDAO = userDAO;
 	}
 
+	public AuthenticationService getAuthenticationService() {
+		return authenticationService;
+	}
+
+	public void setAuthenticationService(AuthenticationService authenticationService) {
+		this.authenticationService = authenticationService;
+	}
+
+	
 
 }

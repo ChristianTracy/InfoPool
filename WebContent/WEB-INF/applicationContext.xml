@@ -27,7 +27,8 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 	<bean id="eventDAO" class="ar.edu.unlp.info.infopool.dao.impl.GenericDAOHibernateJPA" />
 	
 	
-	
+<!-- 	SERVICES -->
+	<bean id="authenticationService" class="ar.edu.unlp.info.infopool.services.impl.AuthenticationServiceImpl" />
 	<!-- Optativamente se puede Habilita la configracion de Beans a traves de 
 		las anotaciones a partir de un paquete -->
 	<context:component-scan base-package="ar.edu.unlp.info.infopool.dao.impl" /> 
