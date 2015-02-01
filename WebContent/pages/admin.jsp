@@ -8,7 +8,6 @@
 </head>
 <body>
 <h1>PERFIL ADMIN</h1>
-<%@include file="navbar.jsp" %>
-
+<%@include file="admin/navbar.jsp" %>
 </body>
 </html>

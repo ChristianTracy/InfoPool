@@ -39,7 +39,7 @@ public class LoginAction extends ActionSupport {
 					Traveler loguedTraveler = (Traveler) u;
 					session.put("user", loguedTraveler);
 				}
-				return "success";
+				return "traveler";
 			} else {
 				addFieldError("error", "Datos Incorrectos");
 				return "badlogin";
