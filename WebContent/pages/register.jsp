@@ -5,7 +5,7 @@
 <%@include file="head.jsp" %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ page import="ar.edu.unlp.info.infopool.model.User"%>
-<title>LOGIN</title>
+<title>Registrarse</title>
 </head>
 	<body>
 		<% User user = (User) session.getAttribute("user");
