@@ -28,10 +28,13 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 	
 	
 <!-- 	SERVICES -->
-	<bean id="authenticationService" class="ar.edu.unlp.info.infopool.services.impl.AuthenticationServiceImpl" />
+	<bean id="authenticationService" class="ar.edu.unlp.info.infopool.services.impl.AuthenticationServiceImpl" >
+		<property name="userDAO" ref="userDAO"></property>
+	</bean>
 	<!-- Optativamente se puede Habilita la configracion de Beans a traves de 
 		las anotaciones a partir de un paquete -->
 	<context:component-scan base-package="ar.edu.unlp.info.infopool.dao.impl" /> 
+	<context:component-scan base-package="ar.edu.unlp.info.infopool.services.impl" /> 
 	<!-- Habilitar@Transactionnal, no alcanza solamente con <context:annotation-config/> -->
 
 </beans>

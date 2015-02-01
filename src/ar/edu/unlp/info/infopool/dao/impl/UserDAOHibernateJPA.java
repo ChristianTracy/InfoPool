@@ -19,7 +19,7 @@ public class UserDAOHibernateJPA extends GenericDAOHibernateJPA<User> implements
 		super(persistentClass);
 	}
 
-	public User exist(String username, String password) {
+	public User getUser(String username, String password) {
 		Query query = this
 				.getEntityManagerFactory()
 				.createQuery(

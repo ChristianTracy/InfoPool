@@ -3,13 +3,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<%@include file="head.jsp" %>
 <title>PANEL admin</title>
 </head>
 <body>
 <h1>PERFIL ADMIN</h1>
-<%@include file="head.jsp" %>
 <%@include file="navbar.jsp" %>
-<a href="logOut">Cerrar Sesión</a>
+
 </body>
 </html>

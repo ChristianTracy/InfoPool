@@ -18,18 +18,17 @@ public class LoginAction extends ActionSupport {
 	public String password;
 	private UserDAO userDAO;
 	private AuthenticationService authenticationService;
+	private Map<String, Object> session = ActionContext.getContext().getSession();
+	
 	public String execute() {
 		return "success";
 	}
 
 	//VALIDATE() 
-	public String autenticate(){
-		System.out.println("AUTENTICATE");
-		authenticationService.printTest();
-		Map<String, Object> session = ActionContext.getContext().getSession();
-		User usersession = (User) session.get("user");
-		if (usersession == null) {
-			User u = userDAO.exist(this.getUser(),this.getPassword());
+	public String autenticate(){		
+		User loguedUser = (User) session.get("user");
+		if (loguedUser == null) {
+			User u = authenticationService.getUserByNameAndPassword(this.getUser(), this.getPassword());
 			if (u != null) {
 				if (u.isAdmin()){
 					Admin adminLogued = (Admin) u;
