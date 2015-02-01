@@ -41,11 +41,14 @@ Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd" >
 		</action>
 		
 		
-		<action name="event" class="ar.edu.unlp.info.infopool.actions.EventAction"
-			method="validEvent">
-			<result name="error">pages/register-error.jsp</result>
+		<action name="event" class="ar.edu.unlp.info.infopool.actions.EventAction">
+			<result name="success">pages/event.jsp</result>
 		</action>
 		
+		<action name="newevent" class="ar.edu.unlp.info.infopool.actions.EventAction" method ="newevent">
+			<result name="success">pages/event-success.jsp</result>
+			<result name="error">pages/index.jsp</result>
+		</action>
 
 	</package>
 
