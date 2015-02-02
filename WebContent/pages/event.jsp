@@ -25,7 +25,8 @@
 <!-- 					</div> -->
 					<div class="form-group">
 						<label for="description">Descripcion</label>
-						<input type="text" name="description" class="form-control" id="description">	
+						<textarea name="description" rows="10" cols="50"></textarea>
+<!-- 						<input type="textarea" name="description" class="form-control" id="description">	 -->
 					</div>
 					<div class="form-group">
 						<label for="location">Direccion</label>
