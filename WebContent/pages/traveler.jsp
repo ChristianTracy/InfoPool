@@ -4,7 +4,7 @@
 <html>
 <head>
 <%@include file="head.jsp" %>
-<title>PANEL admin</title>
+<title>PANEL VIAJERO</title>
 </head>
 <body>
 	<h1>Bienvenido Viajero</h1>
