@@ -21,7 +21,7 @@ public class TravelerAction extends ActionSupport {
 	Date date;
 	String fromAdress;
 	String toAdress;
-	String returnTime;
+	Date returnTime;
 	int seats;
 	String event;
 
@@ -41,7 +41,7 @@ public class TravelerAction extends ActionSupport {
 			t.setFromAdress(this.getFromAdress());
 			t.setToAdress(this.getToAdress());
 			t.setDate(this.getDate());
-//			t.setReturnTime(this.getReturnTime());
+			t.setReturnTime(this.getReturnTime());
 			t.setSeats(this.getSeats());
 			travelDAO.add(t);
 			return "success";
@@ -53,10 +53,32 @@ public class TravelerAction extends ActionSupport {
 
 	private boolean informationIsValid() {
 		if (this.getFromAdress().isEmpty() || this.getToAdress().isEmpty()
-				|| this.getDate().getTime() == 0 || this.getReturnTime().isEmpty() || this.getSeats() < 0) {
+				|| this.getDate().getTime() == 0 || this.getReturnTime().getTime() == 0 || this.getSeats() < 0) {
 			return false;
 		} else {
 			return true;
+		}
+	}
+
+
+	public void setDate(String date) {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd hh:mm");
+		Date d;
+		try {
+			d = (Date) format.parse(date);
+			this.date = d;
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	}
+	public void setReturnTime(String returnTime) {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd hh:mm");
+		Date d;
+		try {
+			d = (Date) format.parse(returnTime);
+			this.returnTime = d;
+		} catch (ParseException e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -71,18 +93,8 @@ public class TravelerAction extends ActionSupport {
 	public Date getDate() {
 		return date;
 	}
-
-	public void setDate(String date) {
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd",Locale.ENGLISH);
-		Date d;
-		try {
-			d = (Date) format.parse(date);
-			this.date = d;
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-	}
-
+	
+	
 	public String getFromAdress() {
 		return fromAdress;
 	}
@@ -99,13 +111,11 @@ public class TravelerAction extends ActionSupport {
 		this.toAdress = toAdress;
 	}
 
-	public String getReturnTime() {
+	public Date getReturnTime() {
 		return returnTime;
 	}
 
-	public void setReturnTime(String returnTime) {
-		this.returnTime = returnTime;
-	}
+
 
 	public int getSeats() {
 		return seats;
