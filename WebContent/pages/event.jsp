@@ -20,8 +20,8 @@
 						<input type="datetime-local" name="date" class="form-control" id="date">
 					</div>
 <!-- 					<div class="form-group"> -->
-<!-- 						<label for="date">Fecha del evento</label> -->
-<!-- 						<input type="date" name="date" class="form-control" id="date"> -->
+<!-- 						<label for="date">hora del evento</label> -->
+<!-- 						<input type="time" name="date" class="form-control" id="date"> -->
 <!-- 					</div> -->
 					<div class="form-group">
 						<label for="description">Descripcion</label>

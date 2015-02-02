@@ -16,6 +16,7 @@ public class EventAction extends ActionSupport{
 	private static final long serialVersionUID = -5583342413515224180L;
 	private EventDAO eventDAO;	
 	private Date date;
+	private String time;
 	private String description;
 	private String location;
 	private String name;
@@ -26,7 +27,7 @@ public class EventAction extends ActionSupport{
 	}
 
 	public void setDate(String date) {
-		System.out.println(date);
+//		System.out.println(date);
 		
 		SimpleDateFormat otroFormato = new SimpleDateFormat("yyyy-mm-dd",Locale.ENGLISH);
 		String fec = date;
@@ -103,6 +104,8 @@ public class EventAction extends ActionSupport{
 	}
 	
 	public String newevent(){
+		System.out.println(date);
+//		System.out.println(time);
 		Event e =new Event();
 		e.setDate(date);
 		e.setDescription(description);
