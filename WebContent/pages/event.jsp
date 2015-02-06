@@ -38,6 +38,7 @@
 		</div>
 	</body>
 	<a href="/InfoPool">boton para volver</a> 
+		<a href="/InfoPool/allEvents">boton para todos los eventos </a> 
 	
 </html>
 <%-- <%@ taglib uri="/struts-tags" prefix="s"%> --%>

@@ -1,5 +1,7 @@
 package ar.edu.unlp.info.infopool.dao.impl;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
@@ -120,5 +122,20 @@ public class GenericDAOHibernateJPA<T> implements GenericDAO<T> {
 		}
 
 	}
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> getAll(){
+		List<T> resultado =null;
+		EntityManager em = EMF.getEMF().createEntityManager();
+		Query consulta = em.createQuery(" from "+ getPersistentClass().getSimpleName());
+				resultado = (List<T>)consulta.getResultList();
+				return resultado;
+	}
+	
+//	public Collection<T> getAll() {
+//	    Query consulta=this.getEm().createQuery(" from "+ getPersistentClass().getSimpleName());
+//		Collection<T>resultado=consulta.getResultList();
+//		return resultado;
+//	
 
 }

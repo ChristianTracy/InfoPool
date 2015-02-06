@@ -3,7 +3,9 @@ package ar.edu.unlp.info.infopool.actions;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import ar.edu.unlp.info.infopool.dao.EventDAO;
@@ -21,10 +23,43 @@ public class EventAction extends ActionSupport{
 	private String location;
 	private String name;
 	private boolean deleted = false;
+	private List<Event> eventCollection;
 	
 	public Date getDate() {
 		return date;
 	}
+	
+	
+
+	public String getTime() {
+		return time;
+	}
+
+
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
+
+
+	public List<Event> getEventCollection() {
+		return eventCollection;
+	}
+
+
+
+	public void setEventCollection(List<Event> eventCollection) {
+		this.eventCollection = eventCollection;
+	}
+
+
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+
 
 	public void setDate(String date) {
 //		System.out.println(date);
@@ -100,6 +135,7 @@ public class EventAction extends ActionSupport{
 	}
 	
 	public String execute() {
+		
 		return "success";
 	}
 	
@@ -113,6 +149,7 @@ public class EventAction extends ActionSupport{
 		e.setName(name);
 		if(this.checkevent(e)){
 			eventDAO.add(e);
+			
 			return "success";
 		}
 		else {
@@ -132,9 +169,6 @@ public class EventAction extends ActionSupport{
 	}
 
 	
-	
-	
-
 	public EventDAO getEventDAO() {
 		return eventDAO;
 	}
@@ -144,11 +178,19 @@ public class EventAction extends ActionSupport{
 	}
 
 	// This method return list of events in database
-    public String listevents() {
-    	
-        return SUCCESS;
+    public String listEvents() {
+//    	List<Event> eventCollection = (List<Event>) eventDAO.getAll();
+    	eventCollection = (List<Event>) eventDAO.getAll();
+    	return "success";
     }
  
-	
+//	public String allEvents(){
+//		
+//		
+//		List<Event> eventcollection= eventDAO.getAll();
+//		
+//		return SUCCESS; 
+//	}
+
 	
 }

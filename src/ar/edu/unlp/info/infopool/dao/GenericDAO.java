@@ -1,5 +1,7 @@
 package ar.edu.unlp.info.infopool.dao;
 
+import java.util.List;
+
 public interface GenericDAO<T> {
 
 	public void add(T entity);
@@ -14,4 +16,5 @@ public interface GenericDAO<T> {
 
 	public boolean exist(Long id);
 
+	public List<T> getAll();
 }
