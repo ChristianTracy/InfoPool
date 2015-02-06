@@ -4,49 +4,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<%@include file="head.jsp" %>
 <title>InfoPool</title>
-<!-- StyleSheets -->
-<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/bootstrap.css"/>">
-<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/bootstrap-theme.css"/>">
-<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/customTemplate.css"/>">
-<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/style.css"/>">
-<!-- End StyleSheets -->
 </head>
-<body>
-<div class="container">
-      <div class="masthead">
-        <div role="navigation">
-          <ul class="nav nav-justified">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="login">Login</a></li>
-          </ul>
-        </div>
-      </div>
-      <!-- Jumbotron -->
-      <div class="jumbotron">
-        <h1>Bienvenido a InfoPool</h1>
-        <p class="lead">Sistema de carpooling creado para alumnos y profesores de la facultad de informática de la Universidad Nacional de La Plata</p>
-        <p><a class="btn btn-lg btn-success" href="register" role="button">Registrarme</a></p>
-      </div>
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-lg-12">
-          <h2>Más info...</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed pellentesque est. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque eget nisi quis dolor vestibulum suscipit ac vehicula eros. </p>
-          <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-        </div>
+<body class="index">
+	<div class="container main-container">
+	
+	      <div class="jumbotron text-center">       
+	        <h1> Bienvenido a InfoPool</h1>
+	         <h1><i class="fa fa-car"></i></h1>
+	        <p class="lead">Sistema de carpooling creado para alumnos y profesores de la facultad de informática de la Universidad Nacional de La Plata </p>
+		        <p><a class="btn btn-lg btn-success" href="register" role="button">Registrarme</a></p>
+		        <a href="#" data-toggle="modal" data-target="#myModal">¿Ya estás registrado?</a>    
+	      </div>
 
-      <!-- Site footer -->
-      <footer class="footer">
-        <p>&copy; Taller de Java -  2014 - Christian Tracy y Mariel Cordal</p>
-      </footer>
+	</div> 
+	<%@include file="footer.jsp" %>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
+	
 
-    </div> <!-- /container -->
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Login</h4>
+      </div>
+      <div class="modal-body">
+		<div class="container-fluid">
+			<div class="form-signin">
+				<form action="loginProcess" method="post">
+					<div class="form-group">
+						<input type="text" name="user" class="form-control" placeholder="Nombre de usuario">	
+					</div>
+					<div class="form-group">
+						<input type="password" name="password" placeholder ="Contraseña" class="form-control">			
+					</div>
+					<button type="submit" class="btn btn-lg btn-default btn-block">Ingresar</button>
+				</form>			
+			</div>
+		</div>
+      </div>
+    </div>
+  </div>
 </div>
 
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
 </body>
 </html>
