@@ -8,20 +8,20 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">InfoPool</a>
+          <a class="navbar-brand" href="/InfoPool">InfoPool</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Inicio</a></li>
+            <li><a href="panelAdmin">Inicio</a></li>
 			<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Eventos <span class="caret"></span></a>
 			<ul class="dropdown-menu" role="menu">
-				<li><a href="#">Ver eventos</a></li>
-				<li><a href="#">Agregar eventos</a></li>
+				<li><a href="listEvents">Ver eventos</a></li>
+				<li><a href="event">Agregar eventos</a></li>
 			</ul>
 			</li>
-            <li><a href="#">Viajeros</a></li>
-            <li><a href="#">Admin tablas</a></li>
+<!--             <li><a href="#">Viajeros</a></li> -->
+<!--             <li><a href="#">Admin tablas</a></li> -->
             <li><a href="logOut">Salir</a></li>
           </ul>
         </div><!--/.nav-collapse -->

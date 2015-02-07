@@ -3,8 +3,6 @@
 <head>
 <%@include file="../head.jsp" %>
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/bootstrap-datetimepicker.css"/>">
-<script src="<c:url value="/resources/js/moment.js"/>"></script>
-<script src="<c:url value="/resources/js/bootstrap-datetimepicker.js"/>"></script>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <title>Nuevo Recorrido</title>
 </head>

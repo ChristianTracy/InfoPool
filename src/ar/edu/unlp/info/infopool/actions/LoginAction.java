@@ -86,7 +86,38 @@ public class LoginAction extends ActionSupport {
 	public void setAuthenticationService(AuthenticationService authenticationService) {
 		this.authenticationService = authenticationService;
 	}
+	
+	public String renderAdmin(){
+		User logued = (User)session.get("user");
+		if (logued != null){
+			if (logued.isAdmin()){
+				return "success";
+			}
+			else{
+				return "error";
+			}			
+		}
+		else{
+			return "error";
+		}
 
+	}
+
+	public String renderTraveler(){
+		User logued = (User)session.get("user");
+		if (logued != null){
+			if (!logued.isAdmin()){
+				return "success";
+			}
+			else{
+				return "error";
+			}			
+		}
+		else{
+			return "error";
+		}
+
+	}
 	
 
 }

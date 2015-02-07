@@ -7,10 +7,10 @@
 <title>PANEL VIAJERO</title>
 </head>
 <body>
-	<h1>Bienvenido Viajero</h1>
 	<%@include file="traveler/navbar.jsp" %>
 	<div class="container">
 		
 	</div>
+	<%@include file="footer.jsp" %>
 </body>
 </html>

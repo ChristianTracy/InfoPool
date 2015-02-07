@@ -25,6 +25,16 @@ Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd" >
 			<result name="logged">/pages/main.jsp</result>
 			<result name="admin">/pages/admin.jsp</result>
 		</action>
+		
+		<action name="panelAdmin" class="ar.edu.unlp.info.infopool.actions.LoginAction" method="renderAdmin">
+			<result name="success">/pages/admin.jsp</result>
+			<result name="error">/pages/login.jsp</result>
+		</action>
+		
+		<action name="panelTraveler" class="ar.edu.unlp.info.infopool.actions.LoginAction" method="renderTraveler">
+			<result name="success">/pages/traveler.jsp</result>
+			<result name="error">/pages/login.jsp</result>
+		</action>
 
 		<action name="logOut" class="ar.edu.unlp.info.infopool.actions.LoginAction"
 			method="logOut">
@@ -45,7 +55,7 @@ Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd" >
 			<result name="success">pages/event.jsp</result>
 		</action>
 		
-		<action name="newevent" class="ar.edu.unlp.info.infopool.actions.EventAction" method ="newevent">
+		<action name="newEvent" class="ar.edu.unlp.info.infopool.actions.EventAction" method ="newEvent">
 			<result name="success">pages/event-success.jsp</result>
 			<result name="error">pages/index.jsp</result>
 		</action>

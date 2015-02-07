@@ -8,6 +8,7 @@
 <title>Listado de Eventos</title>
 </head>
 <body>
+<%@include file="admin/navbar.jsp" %>
 <h1>Eventos</h1>
 
 <table class="table table-striped">

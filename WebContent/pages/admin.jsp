@@ -9,5 +9,7 @@
 <body>
 <h1>PERFIL ADMIN</h1>
 <%@include file="admin/navbar.jsp" %>
+
+<%@include file="footer.jsp" %>
 </body>
 </html>

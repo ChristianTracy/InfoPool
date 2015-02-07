@@ -8,46 +8,47 @@
 <title>Eventos</title>
 </head>
 	<body>
+	<%@include file="admin/navbar.jsp" %>
 		<div class="container">
 			<div class="form-event">
-				<form action="newevent" method="post">
+				<form action="newEvent" method="post">
 					<div class="form-group">
 					 	<label for="name">Nombre del evento</label>
 						<input type="text" name="name" class="form-control" id="name">	
 					</div>
+					
+	            <div class="form-group">
+	            <label for="date">Fecha:</label>
+	                <div class='input-group date' id='datetimepicker'>
+	                    <input type='text' class="form-control"  id="date" name="date"/>
+	                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+	                    </span>
+	                </div>		
+	            </div>
 					<div class="form-group">
-						<label for="date">Fecha del evento</label>
-						<input type="datetime-local" name="date" class="form-control" id="date">
-					</div>
-<!-- 					<div class="form-group"> -->
-<!-- 						<label for="date">hora del evento</label> -->
-<!-- 						<input type="time" name="date" class="form-control" id="date"> -->
-<!-- 					</div> -->
-					<div class="form-group">
-						<label for="description">Descripcion</label>
+						<label for="description">Descripción</label>
 						<textarea name="description" rows="10" cols="50"></textarea>
 <!-- 						<input type="textarea" name="description" class="form-control" id="description">	 -->
 					</div>
 					<div class="form-group">
-						<label for="location">Direccion</label>
+						<label for="location">Dirección</label>
 						<input type="text" name="location" class="form-control" id="location">
 					</div>					
 					<button type="submit" class="btn btn-lg btn-success btn-block">Agregar un evento</button>
 				</form>	
 			</div>
 		</div>
+
+
+        <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker').datetimepicker({
+            	format:'YYYY-MM-DD HH:mm'
+            });
+        });
+        </script>
+<%@include file="footer.jsp" %>
 	</body>
-	<a href="/InfoPool">boton para volver</a> 
-		<a href="/InfoPool/allEvents">boton para todos los eventos </a> 
 	
 </html>
-<%-- <%@ taglib uri="/struts-tags" prefix="s"%> --%>
-<%-- <s:form action="event"> --%>
-<%-- 	<s:date name="date" format="yyyy/MM/dd"></s:date> --%>
-<%-- 	<s:textfield name="description" label="Description"></s:textfield> --%>
-<%-- 	<s:textfield name="location" label="Location"></s:textfield> --%>
-<%-- 	<s:textfield name="name" label="Name"></s:textfield> --%>
-<%-- 	<s:submit value="register"></s:submit> --%>
-<%-- </s:form> --%>
-
 

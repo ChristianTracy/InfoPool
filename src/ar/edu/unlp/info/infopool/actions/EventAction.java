@@ -54,25 +54,28 @@ public class EventAction extends ActionSupport{
 	}
 
 
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
-
-
 	public void setDate(String date) {
-//		System.out.println(date);
-		
-		SimpleDateFormat otroFormato = new SimpleDateFormat("yyyy-mm-dd",Locale.ENGLISH);
-		String fec = date;
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		Date d;
 		try {
-			Date nuevo = (Date) otroFormato.parse(fec);
-			this.date=nuevo;
-		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			d = (Date) format.parse(date);
+			this.date = d;
+		} catch (ParseException e) {
+			e.printStackTrace();
 		}
+		
+		
+		
+		
+//		SimpleDateFormat otroFormato = new SimpleDateFormat("yyyy-mm-dd",Locale.ENGLISH);
+//		String fec = date;
+//		try {
+//			Date nuevo = (Date) otroFormato.parse(fec);
+//			this.date=nuevo;
+//		} catch (ParseException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
 		
 		
 //		
@@ -139,9 +142,7 @@ public class EventAction extends ActionSupport{
 		return "success";
 	}
 	
-	public String newevent(){
-		System.out.println(date);
-//		System.out.println(time);
+	public String newEvent(){
 		Event e =new Event();
 		e.setDate(date);
 		e.setDescription(description);

@@ -39,6 +39,7 @@
 						<input type="text" name="telephone" class="form-control" id="telephone">
 					</div>					
 					<button type="submit" class="btn btn-lg btn-success btn-block">Registrarme</button>
+					<a href="/InfoPool" class="btn btn-warning btn-block">Cancelar</a>
 				</form>	
 			</div>
 		</div>
