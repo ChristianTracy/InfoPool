@@ -63,43 +63,6 @@ public class EventAction extends ActionSupport{
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		
-		
-		
-		
-//		SimpleDateFormat otroFormato = new SimpleDateFormat("yyyy-mm-dd",Locale.ENGLISH);
-//		String fec = date;
-//		try {
-//			Date nuevo = (Date) otroFormato.parse(fec);
-//			this.date=nuevo;
-//		} catch (ParseException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}
-		
-		
-//		
-//		SimpleDateFormat formatter = new SimpleDateFormat("EEEE, MMM dd, yyyy HH:mm:ss a");
-//		String dateInString = date;		
-//		try {
-//	 
-//			Date adate = formatter.parse(dateInString);
-//			System.out.println(adate);
-//			System.out.println(formatter.format(adate));
-//	 
-//		} catch (ParseException e) {
-//			e.printStackTrace();
-//		}
-		
-//		Calendar cal = Calendar.getInstance();
-//		SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy");
-//		try {
-//			cal.setTime(sdf.parse(date));
-//		} catch (ParseException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}// all done
-//		this.date= date;
 	}
 
 	public String getDescription() {
@@ -180,18 +143,9 @@ public class EventAction extends ActionSupport{
 
 	// This method return list of events in database
     public String listEvents() {
-//    	List<Event> eventCollection = (List<Event>) eventDAO.getAll();
     	eventCollection = (List<Event>) eventDAO.getAll();
     	return "success";
     }
- 
-//	public String allEvents(){
-//		
-//		
-//		List<Event> eventcollection= eventDAO.getAll();
-//		
-//		return SUCCESS; 
-//	}
 
 	
 }

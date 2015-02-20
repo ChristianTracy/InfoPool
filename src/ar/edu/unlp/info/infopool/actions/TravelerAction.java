@@ -3,11 +3,13 @@ package ar.edu.unlp.info.infopool.actions;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
+import java.util.List;
 import java.util.Map;
 
+import ar.edu.unlp.info.infopool.dao.EventDAO;
 import ar.edu.unlp.info.infopool.dao.TravelDAO;
-import ar.edu.unlp.info.infopool.dao.UserDAO;
+import ar.edu.unlp.info.infopool.model.Event;
+import ar.edu.unlp.info.infopool.model.Request;
 import ar.edu.unlp.info.infopool.model.Travel;
 import ar.edu.unlp.info.infopool.model.Traveler;
 
@@ -18,18 +20,22 @@ public class TravelerAction extends ActionSupport {
 	private static final long serialVersionUID = 983509072531914212L;
 	private Map<String, Object> session = ActionContext.getContext().getSession();
 	private TravelDAO travelDAO;
+	private EventDAO eventDAO;
+	private List<Request> travelRequests;
+	private List<Event> eventCollection;
 	Date date;
 	String fromAdress;
 	String toAdress;
 	Date returnTime;
 	int seats;
-	String event;
+	Long event;
 
 	public String execute() {
 		return "success";
 	}
 
 	public String newTravel() {
+		eventCollection = (List<Event>) eventDAO.getAll();
 		return "success";
 	}
 
@@ -43,6 +49,8 @@ public class TravelerAction extends ActionSupport {
 			t.setDate(this.getDate());
 			t.setReturnTime(this.getReturnTime());
 			t.setSeats(this.getSeats());
+			Event e = eventDAO.getById(event);
+			t.addEvent(e);
 			travelDAO.add(t);
 			return "success";
 		}
@@ -62,7 +70,7 @@ public class TravelerAction extends ActionSupport {
 
 
 	public void setDate(String date) {
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd hh:mm");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 		Date d;
 		try {
 			d = (Date) format.parse(date);
@@ -72,7 +80,7 @@ public class TravelerAction extends ActionSupport {
 		}
 	}
 	public void setReturnTime(String returnTime) {
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd hh:mm");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 		Date d;
 		try {
 			d = (Date) format.parse(returnTime);
@@ -80,6 +88,12 @@ public class TravelerAction extends ActionSupport {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public String travelRequests(){
+		Traveler loguedUser = (Traveler) session.get("user");
+		travelRequests = loguedUser.getRequests();
+		return "success";
 	}
 
 	public TravelDAO getTravelDAO() {
@@ -125,12 +139,41 @@ public class TravelerAction extends ActionSupport {
 		this.seats = Integer.parseInt(seats);
 	}
 
-	public String getEvent() {
+	public Long getEvent() {
 		return event;
 	}
 
-	public void setEvent(String event) {
+	public void setEvent(Long event) {
 		this.event = event;
 	}
+
+	public EventDAO getEventDAO() {
+		return eventDAO;
+	}
+
+	public void setEventDAO(EventDAO eventDAO) {
+		this.eventDAO = eventDAO;
+	}
+
+	public void setSeats(int seats) {
+		this.seats = seats;
+	}
+
+	public List<Event> getEventCollection() {
+		return eventCollection;
+	}
+
+	public void setEventCollection(List<Event> eventCollection) {
+		this.eventCollection = eventCollection;
+	}
+
+	public List<Request> getTravelRequests() {
+		return travelRequests;
+	}
+
+	public void setTravelRequests(List<Request> travelRequests) {
+		this.travelRequests = travelRequests;
+	}
+	
 
 }

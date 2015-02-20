@@ -4,18 +4,13 @@ Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd" >
 <struts>
 
 	<constant name="struts.devMode" value="true" />
-	<!-- <constant name="struts.objectFactory" value="org.apache.struts2.spring.StrutsSpringObjectFactory" 
-		/> -->
 	
 	<package name="default" namespace="/" extends="struts-default,json-default">
-<!-- 		<action name="listTravels" class="ar.edu.unlp.info.infopool.actions.TravelAction"> <result name="success" type="json" /> -->
-<!-- 		</action> -->
+
 		<action name="">
 			<result name="success">/pages/index.jsp</result>
 		</action>
 
-		<!-- LOGIN -->
-<!-- 		fijar si no necesita como method"input"para que saltee el validate  -->
 		<action name="login" class="ar.edu.unlp.info.infopool.actions.LoginAction">
 			<result name="success">/pages/login.jsp</result>
 		</action>
@@ -71,17 +66,18 @@ Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd" >
 		</action>
 		
 		<action name="listEvents" class="ar.edu.unlp.info.infopool.actions.EventAction" method="listEvents">
-
 			<result name="success">pages/allEvents.jsp</result>		
 		</action>
-		
+	
 		<action name="listTravels" class="ar.edu.unlp.info.infopool.actions.TravelAction" method="listTravels">
 			<result name="success">pages/allTravels.jsp</result>
 		</action>
-	</package>
-	
-	
 
+		<action name="travelRequests" class="ar.edu.unlp.info.infopool.actions.TravelerAction" method="travelRequests">
+			<result name="success">pages/traveler/travelRequests.jsp</result>
+		</action>
+		
+	</package>
 </struts>
 
 

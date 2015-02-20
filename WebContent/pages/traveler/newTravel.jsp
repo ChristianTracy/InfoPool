@@ -26,7 +26,7 @@
 					<input type="text" name="toAdress" class="form-control" id="toAdress">	
 				</div>	
 	            <div class="form-group">
-	            <label for="returnTime">Hora de vuelta:</label>
+	            	<label for="returnTime">Hora de vuelta:</label>
 	                <div class='input-group date' id='datetimepicker2'>
 	                    <input type='text' class="form-control"  id="returnTime" name="returnTime"/>
 	                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
@@ -39,8 +39,11 @@
 				</div>
 				<div class="form-group">
 					<label for="event">Evento asociado:</label>
-					<select class="form-control">
+					<select class="form-control" name="event" id="event">
 						<option value="">Ninguno</option>
+						<s:iterator value="eventCollection">
+							<option value="<s:property value="id"/>"><s:property value="name"/></option>
+						</s:iterator>	
 					</select>
 				</div>				
 				<button class="btn btn-info" type="submit">Crear!</button>
