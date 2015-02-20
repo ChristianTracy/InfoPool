@@ -6,8 +6,10 @@ Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd" >
 	<constant name="struts.devMode" value="true" />
 	<!-- <constant name="struts.objectFactory" value="org.apache.struts2.spring.StrutsSpringObjectFactory" 
 		/> -->
-
-	<package name="default" namespace="/" extends="struts-default">
+	
+	<package name="default" namespace="/" extends="struts-default,json-default">
+<!-- 		<action name="listTravels" class="ar.edu.unlp.info.infopool.actions.TravelAction"> <result name="success" type="json" /> -->
+<!-- 		</action> -->
 		<action name="">
 			<result name="success">/pages/index.jsp</result>
 		</action>
@@ -68,16 +70,17 @@ Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd" >
 			<result name="error">pages/index.jsp</result>
 		</action>
 		
-<!-- 		<action name="allEvents" class="ar.edu.unlp.info.infopool.actions.EventAction"> -->
-<!-- 			<result name="success">pages/allEvents.jsp</result> -->
-<!-- 		</action> -->
-		
 		<action name="listEvents" class="ar.edu.unlp.info.infopool.actions.EventAction" method="listEvents">
 
 			<result name="success">pages/allEvents.jsp</result>		
 		</action>
 		
+		<action name="listTravels" class="ar.edu.unlp.info.infopool.actions.TravelAction" method="listTravels">
+			<result name="success">pages/allTravels.jsp</result>
+		</action>
 	</package>
+	
+	
 
 </struts>
 
