@@ -34,6 +34,11 @@ public abstract class User implements Serializable {
 	public void setUsername(String username) {
 		this.username = username;
 	}
+	
+	public long getId() {
+		return id;
+	}
+
 	abstract public boolean isTraveler();
 	abstract public boolean isAdmin();
 

@@ -45,7 +45,7 @@ body {
 
 .form-signin .usericon{
 	font-size: 110px;
-	color: #cecece;
+	color: #cecece;3
 }
 
 .form-register{
@@ -72,6 +72,27 @@ body {
 .main-container{
 	margin-top: 20px;
 }
+
+.content-container{
+	margin-top: 70px;
+}
+
 .form-event{
 	margin-top:70px;
+}
+
+.form-container-travel-create{
+	margin: 20px auto;
+	width: 400px;
+}
+
+.custom-pager{
+	width: 50%;
+	margin: 0 auto;
+	top: 0 !important;
+	position: relative !important;
+}
+
+.custom-pagedisplay{
+	width:100px !important;
 }

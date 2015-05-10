@@ -8,46 +8,58 @@
 </head>
 	<body>
 		<div class="container">
-			<form action="submitTravel" method="post">
-	            <div class="form-group">
-	            <label for="date">Fecha:</label>
-	                <div class='input-group date' id='datetimepicker1'>
-	                    <input type='text' class="form-control"  id="date" name="date"/>
-	                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-	                    </span>
-	                </div>		
-	            </div>
-				<div class="form-group">
-					<label for="fromAdress">Desde:</label>
-					<input type="text" name="fromAdress" class="form-control" id="fromAdress">	
+			<div class="row">
+				<div	class="form-container-travel-create">
+					<form action="submitTravel" method="post">
+		            	<div class="form-group">
+		            		<label for="date">Fecha:</label>
+		                	<div class='input-group date' id='datetimepicker1'>
+			                    <input type='text' class="form-control"  id="date" name="date"/>
+			                    <span class="input-group-addon">
+			                    	<span class="glyphicon glyphicon-calendar">
+			                    	</span>
+								</span>
+	            			</div>		
+	         			</div>
+	         			
+						<div class="form-group">
+							<label for="fromAdress">Desde:</label>
+							<input type="text" name="fromAdress" class="form-control" id="fromAdress">	
+						</div>
+						
+						<div class="form-group">
+							<label for="toAdress">Hasta:</label>
+							<input type="text" name="toAdress" class="form-control" id="toAdress">	
+						</div>	
+						
+	         			<div class="form-group">
+	         				<label for="returnTime">Hora de vuelta:</label>
+	             			<div class='input-group date' id='datetimepicker2'>
+	                 			<input type='text' class="form-control"  id="returnTime" name="returnTime"/>
+	                 			<span class="input-group-addon">
+	                 				<span class="glyphicon glyphicon-calendar"></span>
+								</span>
+	             			</div>		
+	         			</div>
+	         			
+						<div class="form-group">
+							<label for="seats">Cantidad de asientos:</label>
+							<input type="text" name="seats" class="form-control" id="seats">	
+						</div>
+						
+						<div class="form-group">
+							<label for="event">Evento asociado:</label>
+							<select class="form-control" name="event" id="event">
+								<option value="">Ninguno</option>
+								<s:iterator value="eventCollection">
+									<option value="<s:property value="id"/>"><s:property value="name"/></option>
+								</s:iterator>	
+							</select>
+						</div>			
+						<button class="btn btn-info" type="submit">Crear!</button>
+					</form>
 				</div>
-				<div class="form-group">
-					<label for="toAdress">Hasta:</label>
-					<input type="text" name="toAdress" class="form-control" id="toAdress">	
-				</div>	
-	            <div class="form-group">
-	            	<label for="returnTime">Hora de vuelta:</label>
-	                <div class='input-group date' id='datetimepicker2'>
-	                    <input type='text' class="form-control"  id="returnTime" name="returnTime"/>
-	                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-	                    </span>
-	                </div>		
-	            </div>
-				<div class="form-group">
-					<label for="seats">Cantidad de asientos:</label>
-					<input type="text" name="seats" class="form-control" id="seats">	
-				</div>
-				<div class="form-group">
-					<label for="event">Evento asociado:</label>
-					<select class="form-control" name="event" id="event">
-						<option value="">Ninguno</option>
-						<s:iterator value="eventCollection">
-							<option value="<s:property value="id"/>"><s:property value="name"/></option>
-						</s:iterator>	
-					</select>
-				</div>				
-				<button class="btn btn-info" type="submit">Crear!</button>
-			</form>
+			</div>
 		</div>
 		
         <script type="text/javascript">

@@ -23,6 +23,7 @@ public class TravelerAction extends ActionSupport {
 	private EventDAO eventDAO;
 	private List<Request> travelRequests;
 	private List<Event> eventCollection;
+	private List<Travel> mytravels;
 	Date date;
 	String fromAdress;
 	String toAdress;
@@ -49,8 +50,10 @@ public class TravelerAction extends ActionSupport {
 			t.setDate(this.getDate());
 			t.setReturnTime(this.getReturnTime());
 			t.setSeats(this.getSeats());
-			Event e = eventDAO.getById(event);
-			t.addEvent(e);
+			if (event != null){
+				Event e = eventDAO.getById(event);
+				t.addEvent(e);
+			}
 			travelDAO.add(t);
 			return "success";
 		}
@@ -96,6 +99,10 @@ public class TravelerAction extends ActionSupport {
 		return "success";
 	}
 
+	public String renderPanel(){
+		return "success";
+	}
+	
 	public TravelDAO getTravelDAO() {
 		return travelDAO;
 	}

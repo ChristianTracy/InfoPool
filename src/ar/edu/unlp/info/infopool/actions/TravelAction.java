@@ -1,17 +1,21 @@
 package ar.edu.unlp.info.infopool.actions;
 
 import java.util.List;
+import java.util.Map;
 
 import ar.edu.unlp.info.infopool.dao.TravelDAO;
 import ar.edu.unlp.info.infopool.model.Event;
 import ar.edu.unlp.info.infopool.model.Travel;
+import ar.edu.unlp.info.infopool.model.Traveler;
+import ar.edu.unlp.info.infopool.model.User;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class TravelAction extends ActionSupport{
 
 	private static final long serialVersionUID = -7088198285168273206L;
-
+	private Map<String, Object> session = ActionContext.getContext().getSession();
 	private List<Travel> travelCollection;
 	String algo;
 	public String getAlgo() {
@@ -41,9 +45,8 @@ public class TravelAction extends ActionSupport{
 		this.travelDAO = travelDAO;
 	}
 	 public String listTravels() {
-	    	travelCollection = (List<Travel>)travelDAO.getAll();
-	    	 algo = travelCollection.get(0).getDriver().getName();
-	    	
-	    	return "success";
-	    }
+		 User loguedUser = (User) session.get("user");
+	    travelCollection = (List<Travel>)travelDAO.getOtherUsersTravels(loguedUser.getId());
+	    return "success";
+	 }
 }
