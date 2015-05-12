@@ -24,7 +24,7 @@ public class TravelDAOHibernateJPA extends GenericDAOHibernateJPA<Travel>impleme
 		EntityManager em = EMF.getEMF().createEntityManager();
 		
 		Query consulta = em.createQuery(" select t from Travel t where driver_id <> :driver").setParameter("driver", currentUserId);
-			queryResult  = (List<Travel>)consulta.getResultList();;
+			queryResult  = (List<Travel>)consulta.getResultList();
 				return queryResult;
 	}
 
@@ -34,7 +34,7 @@ public class TravelDAOHibernateJPA extends GenericDAOHibernateJPA<Travel>impleme
 		EntityManager em = EMF.getEMF().createEntityManager();
 		
 		Query consulta = em.createQuery(" select t from Travel t where driver_id = :driver").setParameter("driver", currentUserId);
-			queryResult  = (List<Travel>)consulta.getResultList();;
+			queryResult  = (List<Travel>)consulta.getResultList();
 				return queryResult;
 	}
 	

@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -35,7 +36,7 @@ public class Traveler extends User implements Serializable {
 	@OneToMany(mappedBy = "driver", cascade = CascadeType.MERGE)
 	private List<Travel> travels = new LinkedList<Travel>();
 
-	@ManyToMany(cascade = CascadeType.MERGE)
+	@ManyToMany(cascade = CascadeType.MERGE, fetch=FetchType.EAGER)
 	@JoinColumn(name = "travel_id")
 	private List<Travel> otherTravels = new LinkedList<Travel>();
 

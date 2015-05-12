@@ -25,7 +25,10 @@
 						<h4>Teléfono: <small> <s:property value="traveler.telephone"/></small></h4>
 					</li>
 					<li class="list-group-item">
-						<h4>Mis viajes: <small><s:property value="myTravels.size"/></small></h4>
+						<h4>Como conductor: <small><s:property value="myTravels.size"/></small></h4>
+					</li>
+					<li class="list-group-item">
+						<h4>Como pasajero: <small><s:property value="traveler.otherTravels.size"/></small></h4>
 					</li>
 				</ul>
 				
@@ -40,7 +43,7 @@
 							<th>Salida</th>
 							<th>Regreso</th>
 							<th>Asientos </th>		
-							<th></th>
+							<th>Evento</th>
 						</tr>
 					</thead>
 					
@@ -69,7 +72,7 @@
 						</s:iterator>
 					</tbody>
 				</table>			
-				
+				<hr>
 				<h1>Viajes en los que participa</h1>
 
 				<table class="table table-striped">
@@ -80,33 +83,37 @@
 							<th>Salida</th>
 							<th>Regreso</th>
 							<th>Asientos </th>		
-							<th></th>
+							<th>Evento</th>
+							<th>Denuncia</th>
 						</tr>
 					</thead>
 					
 					<tbody>
-<%-- 					<s:iterator value="traveler.travels"> --%>
-<!-- 						  <tr> -->
-<!-- 						  	<td> -->
-<%-- 						  		<s:property value="fromAdress"/> --%>
-<!-- 						  	</td> -->
-<!-- 						  	<td> -->
-<%-- 						  		<s:property value=" toAdress"/> --%>
-<!-- 						  	</td> -->
-<!-- 						  	<td> -->
-<%-- 						  		<s:property value="date"/> --%>
-<!-- 						  	</td> -->
-<!-- 						  	<td> -->
-<%-- 						  		<s:property value="returnTime"/> --%>
-<!-- 						  	</td> -->
-<!-- 						  	<td> -->
-<%-- 						  		<s:property value=" seats"/> --%>
-<!-- 						  	</td> -->
-<!-- 						  	<td> -->
-<%-- 						  		<s:property value="event.name"/> --%>
-<!-- 						  	</td> -->
-<!-- 						  </tr> -->
-<%-- 						</s:iterator> --%>
+					<s:iterator value="traveler.otherTravels">
+						  <tr>
+						  	<td>
+						  		<s:property value="fromAdress"/>
+						  	</td>
+						  	<td>
+						  		<s:property value=" toAdress"/>
+						  	</td>
+						  	<td>
+						  		<s:property value="date"/>
+						  	</td>
+						  	<td>
+						  		<s:property value="returnTime"/>
+						  	</td>
+						  	<td>
+						  		<s:property value=" seats"/>
+						  	</td>
+						  	<td>
+						  		<s:property value="event.name"/>
+						  	</td>
+						  	<td>
+						  		<i class="btn btn-danger fa fa-bullhorn"></i>
+						  	</td>
+						  </tr>
+						</s:iterator>
 					</tbody>
 				</table>							
 				
