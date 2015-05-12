@@ -12,6 +12,7 @@ import ar.edu.unlp.info.infopool.model.Event;
 import ar.edu.unlp.info.infopool.model.Request;
 import ar.edu.unlp.info.infopool.model.Travel;
 import ar.edu.unlp.info.infopool.model.Traveler;
+import ar.edu.unlp.info.infopool.model.User;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -19,11 +20,13 @@ import com.opensymphony.xwork2.ActionSupport;
 public class TravelerAction extends ActionSupport {
 	private static final long serialVersionUID = 983509072531914212L;
 	private Map<String, Object> session = ActionContext.getContext().getSession();
+	private Traveler traveler;
+	private List<Travel> myTravels;
+	private List<Travel> otherTravels;
 	private TravelDAO travelDAO;
 	private EventDAO eventDAO;
 	private List<Request> travelRequests;
 	private List<Event> eventCollection;
-	private List<Travel> mytravels;
 	Date date;
 	String fromAdress;
 	String toAdress;
@@ -48,7 +51,9 @@ public class TravelerAction extends ActionSupport {
 			t.setFromAdress(this.getFromAdress());
 			t.setToAdress(this.getToAdress());
 			t.setDate(this.getDate());
-			t.setReturnTime(this.getReturnTime());
+			if (this.getReturnTime() !=null){
+				t.setReturnTime(this.getReturnTime());
+			}
 			t.setSeats(this.getSeats());
 			if (event != null){
 				Event e = eventDAO.getById(event);
@@ -64,7 +69,7 @@ public class TravelerAction extends ActionSupport {
 
 	private boolean informationIsValid() {
 		if (this.getFromAdress().isEmpty() || this.getToAdress().isEmpty()
-				|| this.getDate().getTime() == 0 || this.getReturnTime().getTime() == 0 || this.getSeats() < 0) {
+				|| this.getDate().getTime() == 0 || this.getSeats() < 0) {
 			return false;
 		} else {
 			return true;
@@ -99,10 +104,15 @@ public class TravelerAction extends ActionSupport {
 		return "success";
 	}
 
-	public String renderPanel(){
-		return "success";
-	}
+	 public String renderTraveler() {
+		 traveler =  (Traveler) session.get("user");
+		 User loguedUser = (User) session.get("user");
+		 otherTravels = traveler.getOtherTravels();
+		 myTravels = (List<Travel>)travelDAO.getUserTravels(loguedUser.getId());
+	    return "success";
+	 }
 	
+	 
 	public TravelDAO getTravelDAO() {
 		return travelDAO;
 	}
@@ -181,6 +191,31 @@ public class TravelerAction extends ActionSupport {
 	public void setTravelRequests(List<Request> travelRequests) {
 		this.travelRequests = travelRequests;
 	}
+
+	public List<Travel> getMyTravels() {
+		return myTravels;
+	}
+
+	public void setMyTravels(List<Travel> myTravels) {
+		this.myTravels = myTravels;
+	}
+
+	public Traveler getTraveler() {
+		return traveler;
+	}
+
+	public void setTraveler(Traveler traveler) {
+		this.traveler = traveler;
+	}
+
+	public List<Travel> getOtherTravels() {
+		return otherTravels;
+	}
+
+	public void setOtherTravels(List<Travel> otherTravels) {
+		this.otherTravels = otherTravels;
+	}
+	
 	
 
 }

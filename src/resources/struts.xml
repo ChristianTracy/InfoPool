@@ -28,7 +28,7 @@ Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd" >
 			<result name="error">/pages/login.jsp</result>
 		</action>
 		
-		<action name="panelTraveler" class="ar.edu.unlp.info.infopool.actions.TravelerAction" method="renderPanel">
+		<action name="panelTraveler" class="ar.edu.unlp.info.infopool.actions.TravelerAction" method="renderTraveler">
 			<result name="success">/pages/traveler.jsp</result>
 			<result name="error">/pages/login.jsp</result>
 		</action>

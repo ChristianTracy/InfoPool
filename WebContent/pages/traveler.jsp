@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,23 +13,39 @@
 	<div class="content-container container">
 		<div class="row">
 			<div class="col-md-3">
-				información personal
+				<h2>Mis datos</h2>
+				<ul class="list-group">
+					<li class="list-group-item">
+						<h4>Nombre: <small><s:property value="traveler.name"/> <s:property value="traveler.surname"/></small></h4>
+					</li>
+					<li class="list-group-item">
+						<h4>Email: <small><s:property value="traveler.email"/></small></h4>
+					</li>
+					<li class="list-group-item">
+						<h4>Teléfono: <small> <s:property value="traveler.telephone"/></small></h4>
+					</li>
+					<li class="list-group-item">
+						<h4>Mis viajes: <small><s:property value="myTravels.size"/></small></h4>
+					</li>
+				</ul>
+				
 			</div>
 			<div class="col-md-9">
-				<h1>Mis viajes</h1>
+				<h1>Mis viajes creados</h1>
 				<table class="table table-striped">
 					<thead>
 						<tr>
-							<th>Desde <i class="fa fa-sort"></i></th>
-							<th>Hasta <i class="fa fa-sort"></i></th>
-							<th>Salida <i class="fa fa-sort"></i></th>
-							<th>Regreso <i class="fa fa-sort"></i></th>
-							<th>Asientos  <i class="fa fa-sort"></i></th>		
+							<th>Desde</th>
+							<th>Hasta</th>
+							<th>Salida</th>
+							<th>Regreso</th>
+							<th>Asientos </th>		
+							<th></th>
 						</tr>
 					</thead>
 					
 					<tbody>
-					<s:iterator value="mytravels">
+					<s:iterator value="myTravels">
 						  <tr>
 						  	<td>
 						  		<s:property value="fromAdress"/>
@@ -44,10 +62,54 @@
 						  	<td>
 						  		<s:property value=" seats"/>
 						  	</td>
+						  	<td>
+						  		<s:property value="event.name"/>
+						  	</td>
 						  </tr>
 						</s:iterator>
 					</tbody>
 				</table>			
+				
+				<h1>Viajes en los que participa</h1>
+
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Desde</th>
+							<th>Hasta</th>
+							<th>Salida</th>
+							<th>Regreso</th>
+							<th>Asientos </th>		
+							<th></th>
+						</tr>
+					</thead>
+					
+					<tbody>
+<%-- 					<s:iterator value="traveler.travels"> --%>
+<!-- 						  <tr> -->
+<!-- 						  	<td> -->
+<%-- 						  		<s:property value="fromAdress"/> --%>
+<!-- 						  	</td> -->
+<!-- 						  	<td> -->
+<%-- 						  		<s:property value=" toAdress"/> --%>
+<!-- 						  	</td> -->
+<!-- 						  	<td> -->
+<%-- 						  		<s:property value="date"/> --%>
+<!-- 						  	</td> -->
+<!-- 						  	<td> -->
+<%-- 						  		<s:property value="returnTime"/> --%>
+<!-- 						  	</td> -->
+<!-- 						  	<td> -->
+<%-- 						  		<s:property value=" seats"/> --%>
+<!-- 						  	</td> -->
+<!-- 						  	<td> -->
+<%-- 						  		<s:property value="event.name"/> --%>
+<!-- 						  	</td> -->
+<!-- 						  </tr> -->
+<%-- 						</s:iterator> --%>
+					</tbody>
+				</table>							
+				
 			</div>
 		</div>	
 	</div>

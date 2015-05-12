@@ -17,17 +17,8 @@ public class TravelAction extends ActionSupport{
 	private static final long serialVersionUID = -7088198285168273206L;
 	private Map<String, Object> session = ActionContext.getContext().getSession();
 	private List<Travel> travelCollection;
-	String algo;
-	public String getAlgo() {
-		return algo;
-	}
-
-	public void setAlgo(String algo) {
-		this.algo = algo;
-	}
 	private TravelDAO travelDAO;
-	public TravelAction() {
-	}
+	
 
 	public List<Travel> getTravelCollection() {
 		return travelCollection;
