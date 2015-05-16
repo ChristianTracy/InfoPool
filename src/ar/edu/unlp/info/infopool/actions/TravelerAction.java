@@ -268,14 +268,6 @@ public class TravelerAction extends ActionSupport {
 		this.reportedId = reportedId;
 	}
 
-	public Long getReportedId() {
-		return reportedId;
-	}
-
-	public void setReportedId(Long reportedId) {
-		this.reportedId = reportedId;
-	}
-
 	public Long getSelectedTravelId() {
 		return selectedTravelId;
 	}
