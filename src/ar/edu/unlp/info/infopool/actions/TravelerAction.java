@@ -8,6 +8,8 @@ import java.util.Map;
 
 import ar.edu.unlp.info.infopool.dao.EventDAO;
 import ar.edu.unlp.info.infopool.dao.TravelDAO;
+import ar.edu.unlp.info.infopool.dao.impl.GenericDAOHibernateJPA;
+import ar.edu.unlp.info.infopool.model.Complaint;
 import ar.edu.unlp.info.infopool.model.Event;
 import ar.edu.unlp.info.infopool.model.Request;
 import ar.edu.unlp.info.infopool.model.Travel;
@@ -33,6 +35,7 @@ public class TravelerAction extends ActionSupport {
 	Date returnTime;
 	int seats;
 	Long event;
+	Long reportedId;
 
 	public String execute() {
 		return "success";
@@ -104,7 +107,7 @@ public class TravelerAction extends ActionSupport {
 		return "success";
 	}
 
-	 public String renderTraveler() {
+	 public String render() {
 		 traveler =  (Traveler) session.get("user");
 		 User loguedUser = (User) session.get("user");
 		 otherTravels = traveler.getOtherTravels();
@@ -112,6 +115,16 @@ public class TravelerAction extends ActionSupport {
 	    return "success";
 	 }
 	
+	 public void newComplaint(){
+		 GenericDAOHibernateJPA<Traveler>travelerDao = new GenericDAOHibernateJPA<Traveler>(Traveler.class);
+		 Complaint complaint = new Complaint();
+		 traveler =  (Traveler) session.get("user");
+		 complaint.setOwner(traveler);
+		 complaint.setComment("comentario");
+		 Traveler reported = travelerDao.getById(this.getReportedId());
+		 reported.addComplaint(complaint);
+		 travelerDao.update(reported);
+	 }
 	 
 	public TravelDAO getTravelDAO() {
 		return travelDAO;
@@ -214,6 +227,14 @@ public class TravelerAction extends ActionSupport {
 
 	public void setOtherTravels(List<Travel> otherTravels) {
 		this.otherTravels = otherTravels;
+	}
+
+	public Long getReportedId() {
+		return reportedId;
+	}
+
+	public void setReportedId(Long reportedId) {
+		this.reportedId = reportedId;
 	}
 	
 	

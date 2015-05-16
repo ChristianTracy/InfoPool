@@ -18,4 +18,8 @@ public class Checked extends ComplaintState implements Serializable {
 	public void unCheck(Complaint complaint) {
 		complaint.setState(new Unchecked());
 	}
+	
+	public String toString(){
+		return "Checked";
+	}
 }
