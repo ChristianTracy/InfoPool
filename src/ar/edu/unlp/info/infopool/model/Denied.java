@@ -12,10 +12,16 @@ public class Denied extends State implements Serializable {
 	}
 
 	public void accept(Request request) {
-
+		request.setState(new Accepted());
 	}
 
 	public void deny(Request request) {
+		
+	}
 
+	@Override
+	public void pending(Request request) {
+		// Do nothing
+		
 	}
 }

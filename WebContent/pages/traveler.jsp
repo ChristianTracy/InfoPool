@@ -9,6 +9,24 @@
 <title>PANEL VIAJERO</title>
 </head>
 <body>
+<script type="text/javascript">
+	function postComplaint(travelerReported){
+		var url = 'newComplaint';
+		var data = {
+				reportedId : travelerReported
+		};
+		var success = function(){
+			console.log('POST OK!');
+		};
+		$.ajax({
+			  type: "POST",
+			  url: url,
+			  data: data,
+			  success: success
+			})
+	}
+	
+</script>
 	<%@include file="traveler/navbar.jsp" %>
 	<div class="content-container container">
 		<div class="row">
@@ -56,7 +74,7 @@
 						  	<td>
 						  		<s:property value=" toAdress"/>
 						  	</td>
-						  	<td>
+						  	<td id="date">
 						  		<s:property value="date"/>
 						  	</td>
 						  	<td>
@@ -110,7 +128,7 @@
 						  		<s:property value="event.name"/>
 						  	</td>
 						  	<td>
-						  		<i class="btn btn-danger fa fa-bullhorn"></i>
+						  		<a class="btn btn-danger" onClick="postComplaint('<s:property value=" driver.id"/>');"><i class=" fa fa-bullhorn"></i></a>
 						  	</td>
 						  </tr>
 						</s:iterator>

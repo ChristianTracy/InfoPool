@@ -9,6 +9,8 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
+
+
 <!-- ENTITY NANAGER FACTORY -->
 	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="jpaVendorAdapter">
@@ -26,11 +28,36 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 	<bean id="userDAO" class="ar.edu.unlp.info.infopool.dao.impl.UserDAOHibernateJPA" />
 	<bean id="eventDAO" class="ar.edu.unlp.info.infopool.dao.impl.EventDAOHibernateJPA" />
 	<bean id="travelDAO" class="ar.edu.unlp.info.infopool.dao.impl.TravelDAOHibernateJPA" />
+	<bean id="complaintDAO" class="ar.edu.unlp.info.infopool.dao.impl.ComplaintDAOHibernateJPA" />
 	
 <!-- 	SERVICES -->
 	<bean id="authenticationService" class="ar.edu.unlp.info.infopool.services.impl.AuthenticationServiceImpl" >
 		<property name="userDAO" ref="userDAO"></property>
 	</bean>
+	
+<!-- 	MAIL -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="" />
+		<property name="password" value="" />
+	 
+		<property name="javaMailProperties">
+		   <props>
+	       	      <prop key="mail.smtp.auth">true</prop>
+	       	      <prop key="mail.smtp.starttls.enable">true</prop>
+	       	   </props>
+		</property>
+	</bean>
+	 
+	<bean id="mailService" class="ar.edu.unlp.info.infopool.services.impl.MailServiceImpl">
+		<property name="mailSender" ref="mailSender" />
+	</bean>
+
+<!-- ASPECTS	 -->
+	<bean id="maiLToAdminAspect" class="ar.edu.unlp.info.infopool.aspects.MaiLToAdminAspect" ></bean>
+		
+	<aop:aspectj-autoproxy proxy-target-class="true" />
 	<!-- Optativamente se puede Habilita la configracion de Beans a traves de 
 		las anotaciones a partir de un paquete -->
 	<context:component-scan base-package="ar.edu.unlp.info.infopool.dao.impl" /> 

@@ -16,8 +16,6 @@
 <!-- End StyleSheets -->
 </head>
 <body>
-	<h1>estamos en el inicio</h1>
-
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>

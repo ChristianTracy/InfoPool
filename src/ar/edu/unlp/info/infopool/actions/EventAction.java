@@ -2,15 +2,10 @@ package ar.edu.unlp.info.infopool.actions;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
-
 import ar.edu.unlp.info.infopool.dao.EventDAO;
 import ar.edu.unlp.info.infopool.model.Event;
-
 import com.opensymphony.xwork2.ActionSupport;
 
 public class EventAction extends ActionSupport{
@@ -146,6 +141,9 @@ public class EventAction extends ActionSupport{
     	eventCollection = (List<Event>) eventDAO.getAll();
     	return "success";
     }
-
+    private void deleteEvent(){
+    	
+    }
+    
 	
 }

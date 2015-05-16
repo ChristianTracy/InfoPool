@@ -13,10 +13,16 @@ public class Accepted extends State implements Serializable {
 	}
 
 	public void accept(Request request){
-		
+		// Do nothing
 	}
 
 
 	public void deny(Request request){
+		request.setState(new Denied());
+	}
+
+	public void pending(Request request) {
+		// Do nothing
+		
 	}
 }

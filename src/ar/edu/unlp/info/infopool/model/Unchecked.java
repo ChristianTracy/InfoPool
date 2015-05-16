@@ -18,4 +18,8 @@ public class Unchecked extends ComplaintState implements Serializable {
 	public void unCheck(Complaint complaint) {
 		// Do nothing
 	}
+	
+	public String toString(){
+		return "Unchecked";
+	}
 }

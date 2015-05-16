@@ -34,6 +34,25 @@ $(document).ready(function(){
 
 <title>Listado de Recorridos</title>
 </head>
+<script type="text/javascript">
+ function postRequest(idTravel){
+ 	var url = 'postRequest';
+ 	var data={
+ 			selectedTravelId:idTravel	
+ 	};
+ 	var success = function(response){
+ 		alert(response);
+ 	};
+ 	$.ajax({
+ 	type: "POST",
+ 	url: url,
+ 	data: data,
+ 	success: success
+ 	})
+ }
+  
+</script>
+
 <body>
 	<%@include file="traveler/navbar.jsp" %>
 	<div class="container">
@@ -77,6 +96,11 @@ $(document).ready(function(){
 						  	</td>
 						  	<td>
 						  		<s:property value=" seats"/>
+						  	</td>
+						  	<td>
+						  	
+						  		<button class="btn btn-info" onClick="postRequest(<s:property value="id"/>)">Enviar Solicitud</button>
+						  		
 						  	</td>
 						  </tr>
 						</s:iterator>

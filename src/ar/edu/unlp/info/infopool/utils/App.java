@@ -8,6 +8,7 @@ import ar.edu.unlp.info.infopool.model.Admin;
 import ar.edu.unlp.info.infopool.model.Complaint;
 import ar.edu.unlp.info.infopool.model.Event;
 import ar.edu.unlp.info.infopool.model.Message;
+import ar.edu.unlp.info.infopool.model.Request;
 import ar.edu.unlp.info.infopool.model.Travel;
 import ar.edu.unlp.info.infopool.model.Traveler;
 import ar.edu.unlp.info.infopool.model.User;
@@ -101,5 +102,12 @@ public class App {
 		//Agregar un evento a un viaje
 		trav.addEvent(event);
 		travelDao.update(trav);
+		
+		//Agregar un requerimiento
+		Request req = new Request();
+		req.setOwner(traveler1);
+		req.setTravel(trav);
+		traveler2.addRequest(req);
+		userDao.update(traveler2);
 	}
 }

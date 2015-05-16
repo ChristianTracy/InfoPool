@@ -8,6 +8,8 @@ import java.util.Map;
 
 import ar.edu.unlp.info.infopool.dao.EventDAO;
 import ar.edu.unlp.info.infopool.dao.TravelDAO;
+import ar.edu.unlp.info.infopool.dao.impl.GenericDAOHibernateJPA;
+import ar.edu.unlp.info.infopool.model.Complaint;
 import ar.edu.unlp.info.infopool.model.Event;
 import ar.edu.unlp.info.infopool.model.Request;
 import ar.edu.unlp.info.infopool.model.Travel;
@@ -24,15 +26,22 @@ public class TravelerAction extends ActionSupport {
 	private List<Travel> myTravels;
 	private List<Travel> otherTravels;
 	private TravelDAO travelDAO;
+	private Request request;
+
 	private EventDAO eventDAO;
 	private List<Request> travelRequests;
 	private List<Event> eventCollection;
+	private Long selectedTravelId;
+	
+
+
 	Date date;
 	String fromAdress;
 	String toAdress;
 	Date returnTime;
 	int seats;
 	Long event;
+	Long reportedId;
 
 	public String execute() {
 		return "success";
@@ -43,6 +52,31 @@ public class TravelerAction extends ActionSupport {
 		return "success";
 	}
 
+	public String postRequest(){
+		
+		Request req = new Request();
+		Traveler loguedUser = (Traveler) session.get("user");
+		req.setOwner(loguedUser); //soy yo el que viaja
+		Travel t = travelDAO.getById(this.getSelectedTravelId()); //busco el viaje de la tabla
+		Traveler driver = t.getDriver();
+		req.setTravel(t);
+		driver.addRequest(req);
+		GenericDAOHibernateJPA<Traveler>travelerDao = new GenericDAOHibernateJPA<Traveler>(Traveler.class);
+		GenericDAOHibernateJPA<Request>requestDAO = new GenericDAOHibernateJPA<Request>(Request.class);
+		List<Request> R = requestDAO.getAll();
+		for (int i = 0; i < R.size(); i++) {
+			if(loguedUser.getId()== R.get(i).getOwner().getId() ){
+				if(t.getId() == R.get(i).getTravel().getId()){
+					return "error";
+				}
+			}
+		}
+		travelerDao.update(driver);
+		return "success";	
+	}
+	
+	
+	
 	public String submitTravel() {
 		if (informationIsValid()){
 			Traveler loguedUser = (Traveler) session.get("user");
@@ -104,7 +138,7 @@ public class TravelerAction extends ActionSupport {
 		return "success";
 	}
 
-	 public String renderTraveler() {
+	 public String render() {
 		 traveler =  (Traveler) session.get("user");
 		 User loguedUser = (User) session.get("user");
 		 otherTravels = traveler.getOtherTravels();
@@ -112,6 +146,16 @@ public class TravelerAction extends ActionSupport {
 	    return "success";
 	 }
 	
+	 public void newComplaint(){
+		 GenericDAOHibernateJPA<Traveler>travelerDao = new GenericDAOHibernateJPA<Traveler>(Traveler.class);
+		 Complaint complaint = new Complaint();
+		 traveler =  (Traveler) session.get("user");
+		 complaint.setOwner(traveler);
+		 complaint.setComment("comentario");
+		 Traveler reported = travelerDao.getById(this.getReportedId());
+		 reported.addComplaint(complaint);
+		 travelerDao.update(reported);
+	 }
 	 
 	public TravelDAO getTravelDAO() {
 		return travelDAO;
@@ -215,7 +259,29 @@ public class TravelerAction extends ActionSupport {
 	public void setOtherTravels(List<Travel> otherTravels) {
 		this.otherTravels = otherTravels;
 	}
-	
-	
+
+	public Long getReportedId() {
+		return reportedId;
+	}
+
+	public void setReportedId(Long reportedId) {
+		this.reportedId = reportedId;
+	}
+
+	public Long getReportedId() {
+		return reportedId;
+	}
+
+	public void setReportedId(Long reportedId) {
+		this.reportedId = reportedId;
+	}
+
+	public Long getSelectedTravelId() {
+		return selectedTravelId;
+	}
+
+	public void setSelectedTravelId(Long selectedTravelId) {
+		this.selectedTravelId = selectedTravelId;
+	}
 
 }

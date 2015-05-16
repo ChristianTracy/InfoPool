@@ -2,6 +2,7 @@ package ar.edu.unlp.info.infopool.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,8 +19,7 @@ public class Request implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "owner_fk")
 	private Traveler owner; // Quien hace el requerimiento
-
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "state_fk")
 	private State state;
 	
@@ -28,7 +28,8 @@ public class Request implements Serializable {
 	private Travel travel; // Viaje seleccionado
 
 	public Request() {
-		setState(new Pending());
+		super();
+		this.setState(new Pending());
 	}
 
 	public void accept() {

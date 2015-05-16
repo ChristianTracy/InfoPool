@@ -18,4 +18,10 @@ public class Pending extends State implements Serializable{
 	public void deny(Request request) {
 		request.setState(new Denied());
 	}
+
+	@Override
+	public void pending(Request request) {
+		// Do nothing
+		
+	}
 }
