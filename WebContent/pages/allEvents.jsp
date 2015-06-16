@@ -22,7 +22,7 @@
 						<th>Locación</th>
 						<th>Fecha</th>
 						<th>Descripción</th>
-						<th>Acciones</th>
+<!-- 						<th>Acciones</th> -->
 					</tr>
 				</thead>
 	
@@ -42,8 +42,8 @@
 					  		<s:property value="description"/>
 					  	</td>
 					  	<td>
-					  		<input type="button" value="Borrar">
-					  		<input type="button" value="Modificar"> 
+<!-- 					  		<input type="button" value="Borrar"> -->
+<!-- 					  		<input type="button" value="Modificar">  -->
 					  	</td>	
 					  	
 					  </tr>

@@ -66,7 +66,8 @@ Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd" >
 			<result name="success">pages/traveler/newTravel.jsp</result>
 		</action>
 		<action name="submitTravel" class="ar.edu.unlp.info.infopool.actions.TravelerAction" method="submitTravel">
-			<result name="success">pages/traveler.jsp</result>
+			<result name="success" type="redirect">panelTraveler</result>
+<!-- 			<result name="success">pages/traveler.jsp</result> -->
 			<result name="error">pages/index.jsp</result>
 		</action>
 		

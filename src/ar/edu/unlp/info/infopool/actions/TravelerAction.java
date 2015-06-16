@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import ar.edu.unlp.info.infopool.dao.EventDAO;
+import ar.edu.unlp.info.infopool.dao.RequestDAO;
 import ar.edu.unlp.info.infopool.dao.TravelDAO;
 import ar.edu.unlp.info.infopool.dao.impl.GenericDAOHibernateJPA;
 import ar.edu.unlp.info.infopool.model.Complaint;
@@ -25,6 +26,7 @@ public class TravelerAction extends ActionSupport {
 	private Traveler traveler;
 	private List<Travel> myTravels;
 	private List<Travel> otherTravels;
+	private RequestDAO requestDAO;
 	private TravelDAO travelDAO;
 	private Request request;
 
@@ -134,10 +136,14 @@ public class TravelerAction extends ActionSupport {
 	
 	public String travelRequests(){
 		Traveler loguedUser = (Traveler) session.get("user");
-		travelRequests = loguedUser.getRequests();
+		travelRequests = requestDAO.getRequestByUserId(loguedUser.getId());
 		return "success";
 	}
 
+	public String changeState(){ //ca
+		return "sucess";
+	}
+	
 	 public String render() {
 		 traveler =  (Traveler) session.get("user");
 		 User loguedUser = (User) session.get("user");
@@ -274,6 +280,14 @@ public class TravelerAction extends ActionSupport {
 
 	public void setSelectedTravelId(Long selectedTravelId) {
 		this.selectedTravelId = selectedTravelId;
+	}
+
+	public RequestDAO getRequestDAO() {
+		return requestDAO;
+	}
+
+	public void setRequestDAO(RequestDAO requestDAO) {
+		this.requestDAO = requestDAO;
 	}
 
 }

@@ -29,6 +29,7 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 	<bean id="eventDAO" class="ar.edu.unlp.info.infopool.dao.impl.EventDAOHibernateJPA" />
 	<bean id="travelDAO" class="ar.edu.unlp.info.infopool.dao.impl.TravelDAOHibernateJPA" />
 	<bean id="complaintDAO" class="ar.edu.unlp.info.infopool.dao.impl.ComplaintDAOHibernateJPA" />
+	<bean id="requestDAO" class="ar.edu.unlp.info.infopool.dao.impl.RequestDAOHibernateJPA" />
 	
 <!-- 	SERVICES -->
 	<bean id="authenticationService" class="ar.edu.unlp.info.infopool.services.impl.AuthenticationServiceImpl" >

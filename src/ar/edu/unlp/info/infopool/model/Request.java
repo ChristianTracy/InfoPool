@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -23,7 +24,7 @@ public class Request implements Serializable {
 	@JoinColumn(name = "state_fk")
 	private State state;
 	
-	@OneToOne
+	@OneToOne( fetch=FetchType.EAGER)
 	@JoinColumn(name="travel_fk")
 	private Travel travel; // Viaje seleccionado
 

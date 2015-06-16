@@ -1,6 +1,7 @@
 package ar.edu.unlp.info.infopool.model;
 
 import java.io.Serializable;
+
 import javax.persistence.Entity;
 
 @Entity
@@ -23,5 +24,9 @@ public class Denied extends State implements Serializable {
 	public void pending(Request request) {
 		// Do nothing
 		
+	}
+	
+	public String toString(){
+		return "Denied";
 	}
 }

@@ -20,7 +20,7 @@
 				<li><a href="newTravel">Nuevo</a></li>
 			</ul>
 			</li>
-			<li><a href="travelRequests"><i class="fa fa-car"></i>  <span class="badge">4</span></a></li>
+			<li><a href="travelRequests"><i class="fa fa-car"></i>  <span class="badge"></span></a></li>
             <li><a href="logOut">Salir</a></li>
           </ul>
         </div><!--/.nav-collapse -->
